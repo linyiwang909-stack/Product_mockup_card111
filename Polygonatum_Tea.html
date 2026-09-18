@@ -79,6 +79,29 @@
     .label { display: block; color: var(--muted); font-size: 13px; margin-bottom: 8px; }
     .value { font-size: 27px; font-weight: 800; color: var(--green); }
     .featured .value { color: #244d31; }
+    .tier-switch {
+      display: inline-flex;
+      gap: 4px;
+      padding: 4px;
+      margin-bottom: 16px;
+      background: var(--pale);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+    .tier-btn {
+      border: 0;
+      background: transparent;
+      padding: 9px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #4f5d54;
+      border-radius: 7px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .16s ease, color .16s ease;
+    }
+    .tier-btn.is-active { background: var(--green); color: #fff; }
+    .tier-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
     h2 { font-size: 19px; margin: 28px 0 13px; padding-left: 12px; border-left: 4px solid var(--gold); }
     p { line-height: 1.75; margin: 0; }
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 30px; }
@@ -127,9 +150,14 @@
     </header>
 
     <main>
+      <div class="tier-switch" role="tablist" aria-label="佣金档位切换">
+        <button type="button" class="tier-btn is-active" data-tier="A" role="tab" aria-selected="true">A 类合作模式&nbsp;·&nbsp;45%</button>
+        <button type="button" class="tier-btn" data-tier="B" role="tab" aria-selected="false">B 类合作模式&nbsp;·&nbsp;40%</button>
+      </div>
+
       <section class="commission" aria-label="佣金信息">
-        <div class="featured"><span class="label">达人佣金</span><span class="value">45%</span></div>
-        <div><span class="label">按398元成交价预估</span><span class="value">¥179.1/单</span></div>
+        <div class="featured"><span class="label">达人佣金</span><span class="value" id="commissionRate">45%</span></div>
+        <div><span class="label">按398元成交价预估</span><span class="value">¥<span id="commissionAmount">179.1</span>/单</span></div>
       </section>
 
       <h2>产品一句话</h2>
@@ -168,7 +196,7 @@
       <h2>合作规则</h2>
       <div class="grid">
         <div class="item"><strong>合作方式</strong><span>寄样品 + 纯佣金；达人无需预付合作费用。</span></div>
-        <div class="item"><strong>单笔预估收益</strong><span>按398元成交价计算，达人佣金约179.1元。</span></div>
+        <div class="item"><strong>单笔预估收益</strong><span>按398元成交价计算，达人佣金约<span id="ruleEarning">179.1</span>元。</span></div>
         <div class="item"><strong>结算口径</strong><span>按实际支付金额计算；退款订单不计佣金。</span></div>
         <div class="item"><strong>结算时间</strong><span>订单确认收货并通过售后期后结算，具体以合作规则为准。</span></div>
       </div>
@@ -215,6 +243,34 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
     });
+
+    /* 佣金档位切换 A/B */
+    const tierData = {
+      A: { rate: "45%", amount: "179.1" },
+      B: { rate: "40%", amount: "159.2" }
+    };
+    const tierButtons = document.querySelectorAll(".tier-btn");
+    const rateEl = document.getElementById("commissionRate");
+    const amountEl = document.getElementById("commissionAmount");
+    const ruleEl = document.getElementById("ruleEarning");
+
+    function setTier(tier) {
+      const data = tierData[tier];
+      if (!data) return;
+      rateEl.textContent = data.rate;
+      amountEl.textContent = data.amount;
+      ruleEl.textContent = data.amount;
+      tierButtons.forEach((btn) => {
+        const active = btn.dataset.tier === tier;
+        btn.classList.toggle("is-active", active);
+        btn.setAttribute("aria-selected", String(active));
+      });
+    }
+
+    tierButtons.forEach((btn) => {
+      btn.addEventListener("click", () => setTier(btn.dataset.tier));
+    });
+    setTier("A");
   </script>
 </body>
 </html>
