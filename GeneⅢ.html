@@ -169,9 +169,19 @@
     color: #fff;
     border-color: transparent;
     box-shadow: 0 6px 18px rgba(45, 122, 79, 0.35);
+    animation: modeGlow 2.6s ease-in-out infinite;
   }
   .mode-btn.active .mode-rate {
     color: #a8d5ba;
+  }
+
+  /* 选中按钮呼吸光晕：阴影轻轻放大再收回 */
+  @keyframes modeGlow {
+    0%, 100% { box-shadow: 0 6px 18px rgba(45, 122, 79, 0.35); }
+    50%      { box-shadow: 0 12px 34px rgba(45, 122, 79, 0.62); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mode-btn.active { animation: none; }
   }
 
   /* ===== 产品线区域 ===== */

@@ -6,18 +6,23 @@
   <title>华岭仙精黄精茶｜达人产品模卡</title>
   <style>
     :root {
-      --ink: #26352c;
-      --muted: #6c776f;
-      --line: #dbe4dc;
-      --green: #3f6d4e;
+      --ink: #1d2f25;
+      --muted: #5d7266;
+      --line: #d3e2d8;
+      --green: #2f6b49;
+      --green-deep: #113f27;
+      --green-mid: #2a704a;
+      --green-soft: #4b8666;
       --pale: #edf4ed;
+      --pale-2: #dae7df;
       --gold: #b4863e;
-      --paper: #fbfcf8;
+      --paper: #ffffff;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      background: #e8eee8;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #dce9e1 0%, #edf3ef 45%, #f6faf7 100%);
       color: var(--ink);
       font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
     }
@@ -25,21 +30,39 @@
       width: min(100%, 900px);
       margin: 28px auto;
       background: var(--paper);
-      box-shadow: 0 14px 40px rgba(38, 53, 44, .12);
+      box-shadow: 0 20px 50px rgba(17, 63, 39, .20);
+      border-radius: 20px;
       overflow: hidden;
     }
     header {
-      padding: 42px 52px 34px;
-      background: linear-gradient(135deg, #315c40, #547d5b);
+      padding: 46px 52px 40px;
+      background: linear-gradient(118deg, #0f3a24 0%, #1c5a38 38%, #2a704a 78%, #3a7a55 100%);
       color: #fff;
       position: relative;
     }
+    header:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(720px 260px at 88% -30%, rgba(255, 255, 255, .16), transparent 60%);
+      pointer-events: none;
+    }
     .hero-product { position: relative; z-index: 1; }
     .visual { margin: 18px auto 22px; max-width: 420px; }
-    .visual img { width: 100%; max-height: 300px; object-fit: contain; display: block; border: 1px solid var(--line); }
-    .visual-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 760px; margin: 0 auto; }
-    .visual-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border: 1px solid var(--line); cursor: zoom-in; transition: transform .16s ease, box-shadow .16s ease; }
-    .visual-grid img:hover { transform: translateY(-2px); box-shadow: 0 7px 18px rgba(38, 53, 44, .16); }
+    .visual img { width: 100%; max-height: 300px; object-fit: contain; display: block; border: 1px solid var(--line); border-radius: 12px; }
+    .visual-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 760px; margin: 0 auto; }
+    .visual-grid img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      cursor: zoom-in;
+      box-shadow: 0 4px 12px rgba(17, 63, 39, .10);
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .visual-grid img:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(17, 63, 39, .18); }
     .lightbox { position: fixed; inset: 0; z-index: 20; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(19, 27, 22, .86); }
     .lightbox.is-open { display: flex; }
     .lightbox img { max-width: min(92vw, 980px); max-height: 90vh; width: auto; height: auto; object-fit: contain; box-shadow: 0 18px 50px rgba(0,0,0,.35); }
@@ -53,76 +76,111 @@
       font-size: 54px;
       font-weight: 700;
       letter-spacing: 5px;
-      color: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.14);
       writing-mode: vertical-rl;
     }
-    .eyebrow { font-size: 13px; letter-spacing: 2px; opacity: .82; }
+    .eyebrow { font-size: 13px; letter-spacing: 2px; opacity: .9; color: #dcebdc; }
     h1 { margin: 10px 0 7px; font-size: 34px; letter-spacing: 1px; }
-    .subtitle { font-size: 16px; opacity: .9; }
+    .subtitle { font-size: 16px; opacity: .92; }
     .price-row { display: flex; align-items: baseline; gap: 10px; margin-top: 26px; }
-    .price { font-size: 42px; font-weight: 800; }
-    .price-label { font-size: 14px; opacity: .82; }
-    main { padding: 34px 52px 42px; }
+    .price { font-size: 42px; font-weight: 800; text-shadow: 0 2px 10px rgba(0, 0, 0, .18); }
+    .price-label { font-size: 14px; opacity: .85; }
+    main { padding: 36px 52px 46px; }
     .commission {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
-      gap: 12px;
-      margin-bottom: 30px;
+      gap: 14px;
+      margin-bottom: 32px;
+      padding: 14px;
+      background: linear-gradient(135deg, #e8f1ea, #ddebe1);
+      border: 1px solid #c7dcce;
+      border-radius: 18px;
     }
     .commission div {
       border: 1px solid var(--line);
-      background: #fff;
-      padding: 17px 18px;
-      min-height: 92px;
+      background: rgba(255, 255, 255, .88);
+      padding: 18px 20px;
+      min-height: 96px;
+      border-radius: 12px;
     }
-    .commission .featured { background: var(--pale); border-color: #bdd2c0; }
-    .label { display: block; color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+    .commission .featured {
+      background: linear-gradient(135deg, #f0f7f2, #e3efe7);
+      border-color: #bcd6c4;
+      box-shadow: none;
+    }
+    .featured .label { color: #5d7266; }
+    .label { display: block; color: var(--muted); font-size: 13px; margin-bottom: 8px; letter-spacing: .5px; }
     .value { font-size: 27px; font-weight: 800; color: var(--green); }
     .featured .value { color: #244d31; }
     .tier-switch {
       display: inline-flex;
-      gap: 4px;
-      padding: 4px;
-      margin-bottom: 16px;
-      background: var(--pale);
+      gap: 6px;
+      padding: 6px;
+      margin-bottom: 18px;
+      background: #edf4ee;
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: 14px;
+      box-shadow: inset 0 1px 3px rgba(17, 63, 39, .05);
     }
     .tier-btn {
       border: 0;
       background: transparent;
-      padding: 9px 24px;
+      padding: 10px 26px;
       font-size: 15px;
       font-weight: 600;
-      color: #4f5d54;
-      border-radius: 7px;
+      color: #2f5d42;
+      border-radius: 10px;
       cursor: pointer;
       font-family: inherit;
-      transition: background .16s ease, color .16s ease;
+      transition: background .18s ease, color .18s ease, box-shadow .18s ease;
     }
-    .tier-btn.is-active { background: var(--green); color: #fff; }
+    .tier-btn:hover { background: #e2eee5; }
+    @keyframes tier-breathe {
+      0%, 100% {
+        box-shadow: 0 4px 12px rgba(42, 112, 74, .30);
+      }
+      50% {
+        box-shadow: 0 4px 22px rgba(42, 112, 74, .55), 0 0 0 5px rgba(74, 134, 102, .18);
+      }
+    }
+    .tier-btn.is-active {
+      background: linear-gradient(135deg, #3a7a55, #4b8666);
+      color: #fff;
+      animation: tier-breathe 2.6s ease-in-out infinite;
+    }
     .tier-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-    h2 { font-size: 19px; margin: 28px 0 13px; padding-left: 12px; border-left: 4px solid var(--gold); }
+    @media (prefers-reduced-motion: reduce) {
+      .tier-btn.is-active { animation: none; }
+    }
+    h2 { font-size: 19px; margin: 30px 0 14px; padding-left: 12px; border-left: 4px solid var(--gold); }
     p { line-height: 1.75; margin: 0; }
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 30px; }
-    .item { padding: 13px 0; border-bottom: 1px solid var(--line); }
-    .item strong { display: block; margin-bottom: 5px; font-size: 14px; }
+    .item { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .item strong { display: block; margin-bottom: 5px; font-size: 14px; color: #26523a; }
     .item span { color: #4f5d54; font-size: 14px; line-height: 1.65; }
-    .topics { display: flex; flex-wrap: wrap; gap: 9px; }
-    .tag { padding: 8px 12px; background: var(--pale); color: #345b40; font-size: 13px; }
+    .topics { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag {
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #eaf3ec, #deeee2);
+      border: 1px solid #cde1d3;
+      color: #2c5e42;
+      font-size: 13px;
+      border-radius: 999px;
+    }
     .notice {
-      margin-top: 26px;
-      padding: 16px 18px;
-      background: #fff8eb;
+      margin-top: 28px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #fff9ec, #fdf2d9);
       border: 1px solid #ead7ae;
+      border-radius: 14px;
       color: #675333;
       font-size: 13px;
       line-height: 1.7;
     }
     footer {
-      padding: 18px 52px;
-      background: #f0f4ef;
-      color: var(--muted);
+      padding: 22px 52px;
+      background: linear-gradient(118deg, #1e5c3c, #2a704a 55%, #3f7a55 100%);
+      color: rgba(255, 255, 255, .88);
       font-size: 12px;
       display: flex;
       justify-content: space-between;
@@ -134,7 +192,10 @@
       h1 { font-size: 26px; max-width: 75%; }
       .visual-grid { grid-template-columns: 1fr 1fr; }
       .commission, .grid { grid-template-columns: 1fr; }
-      footer { padding: 16px 24px; flex-direction: column; gap: 4px; }
+      .commission { padding: 10px; }
+      .tier-switch { display: flex; width: 100%; }
+      .tier-btn { flex: 1; padding: 10px 8px; font-size: 14px; }
+      footer { padding: 18px 24px; flex-direction: column; gap: 4px; }
     }
   </style>
 </head>
@@ -146,7 +207,7 @@
         <h1>华岭仙精黄精茶</h1>
         <div class="subtitle">只做正宗的多花黄精茶</div>
       </div>
-      <div class="price-row"><span class="price">¥398</span><span class="price-label">建议零售价</span></div>
+      <div class="price-row"><span class="price">¥398</span><span class="price-label">带货价</span></div>
     </header>
 
     <main>
@@ -208,7 +269,6 @@
 
     <footer>
       <span>合作咨询：请联系品牌方获取样品与商品链接</span>
-      <span>版本：2026-09-14 草案</span>
     </footer>
   </article>
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="图片预览">

@@ -155,6 +155,15 @@ body {
   color: #fff;
   border-color: #b85c2e;
   box-shadow: 0 4px 14px rgba(184, 92, 46, 0.35);
+  animation: modeGlow 2.6s ease-in-out infinite;
+}
+@keyframes modeGlow {
+  0%, 100% {
+    box-shadow: 0 4px 14px rgba(184, 92, 46, 0.25);
+  }
+  50% {
+    box-shadow: 0 8px 30px rgba(184, 92, 46, 0.55);
+  }
 }
 
 /* ===== 产品线区域 ===== */
