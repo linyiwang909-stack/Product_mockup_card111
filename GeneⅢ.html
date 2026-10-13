@@ -92,14 +92,88 @@
 
   .commission-banner {
     display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+    background: linear-gradient(135deg, #0d3320 0%, #1a5c3a 50%, #2d7a4f 100%);
+    padding: 0;
+    margin: 0 8px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(26, 92, 58, 0.3);
+    overflow: hidden;
+    position: relative;
+  }
+  .commission-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(168,213,186,0.5), transparent);
+  }
+
+  .dual-banner {
+    gap: 0;
+  }
+  .commission-group {
+    flex: 1;
+    text-align: center;
+    padding: 26px 20px;
+    position: relative;
+  }
+  .commission-group + .commission-group::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.2), transparent);
+  }
+  .group-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .group-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .group-rates {
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 28px;
-    background: linear-gradient(135deg, #2d7a4f 0%, #1a5c3a 100%);
-    padding: 24px 36px;
-    margin: 0 20px;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(45, 122, 79, 0.3);
+    gap: 16px;
+  }
+  .rate-block {
+    text-align: center;
+  }
+  .rate-block .rate-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+  .rate-block .rate-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 4px;
+    letter-spacing: 1.5px;
+  }
+  .rate-sep {
+    font-size: 16px;
+    color: rgba(255,255,255,0.3);
+    font-weight: 300;
   }
 
   .commission-number { text-align: center; }
@@ -140,39 +214,49 @@
   .mode-switch {
     display: flex;
     justify-content: center;
-    gap: 14px;
-    margin: 20px 20px 0;
+    gap: 18px;
+    margin: 28px 8px 0;
     flex-wrap: wrap;
   }
   .mode-btn {
     font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    color: #1a3a2a;
-    background: #e4efe8;
-    border: 2px solid #c3dccb;
-    border-radius: 999px;
-    padding: 10px 24px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #1a5c3a;
+    background: #fff;
+    border: 2.5px solid #c3dccb;
+    border-radius: 16px;
+    padding: 20px 44px;
     cursor: pointer;
     transition: all 0.25s ease;
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
     gap: 8px;
+    line-height: 1.2;
+    box-shadow: 0 4px 16px rgba(26, 92, 58, 0.08);
+    min-width: 260px;
   }
-  .mode-btn .mode-rate {
-    font-weight: 700;
-    color: #2d7a4f;
+  .mode-btn .mode-sub {
+    font-size: 13px;
+    font-weight: 400;
+    color: #8aa898;
+    letter-spacing: 0.5px;
+  }
+  .mode-btn:hover {
+    border-color: #a8d5ba;
+    box-shadow: 0 6px 20px rgba(26, 92, 58, 0.12);
+    transform: translateY(-2px);
   }
   .mode-btn.active {
     background: linear-gradient(135deg, #2d7a4f 0%, #1a5c3a 100%);
     color: #fff;
     border-color: transparent;
-    box-shadow: 0 6px 18px rgba(45, 122, 79, 0.35);
-    animation: modeGlow 2.6s ease-in-out infinite;
+    box-shadow: 0 8px 28px rgba(45, 122, 79, 0.35);
   }
-  .mode-btn.active .mode-rate {
-    color: #a8d5ba;
+  .mode-btn.active .mode-sub {
+    color: #b8dfc7;
   }
 
   /* 选中按钮呼吸光晕：阴影轻轻放大再收回 */
@@ -215,6 +299,57 @@
     margin: 24px 8px 14px;
     padding-left: 10px;
     border-left: 4px solid #4caf7d;
+  }
+
+  .group-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 18px;
+    margin: 32px 0 16px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .group-banner::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #2d7a4f, #4caf7d);
+  }
+  .group-banner.group-1 {
+    background: linear-gradient(90deg, rgba(232,245,236,0.8) 0%, rgba(240,249,244,0.4) 100%);
+  }
+  .group-banner .group-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a5c3a;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .group-banner .group-name::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4caf7d;
+  }
+  .group-banner .group-commission {
+    font-size: 11px;
+    font-weight: 600;
+    color: #2d7a4f;
+    background: #fff;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid #d4edda;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(26, 92, 58, 0.08);
   }
 
   .product-grid {
@@ -790,14 +925,12 @@
   @media (max-width: 768px) {
     .product-grid { grid-template-columns: 1fr; }
     .advantage-grid { grid-template-columns: repeat(2, 1fr); }
-    .commission-banner {
-      flex-direction: column;
-      gap: 14px;
-      margin: 0 16px;
-      padding: 20px;
+    .mode-btn {
+      padding: 18px 30px;
+      font-size: 17px;
+      min-width: 210px;
     }
-    .commission-divider { width: 50px; height: 1px; }
-    .commission-info { text-align: center; }
+    .mode-btn .mode-sub { font-size: 12px; }
     .header, .hero-section, .product-section, .advantage-section, .footer {
       padding-left: 16px;
       padding-right: 16px;
@@ -815,9 +948,11 @@
     .hero-section { padding: 20px 16px; }
     .hero-title { font-size: 19px; letter-spacing: 1px; }
     .hero-subtitle { font-size: 12px; margin-bottom: 14px; }
-    .commission-banner { margin: 0; padding: 16px 14px; gap: 10px; }
-    .commission-number .num { font-size: 38px; }
-    .commission-number .label { font-size: 11px; letter-spacing: 1px; }
+    .mode-btn { padding: 16px 26px; font-size: 16px; min-width: 190px; }
+    .mode-btn .mode-sub { font-size: 11px; }
+    .group-banner { padding: 10px 14px; margin: 24px 0 12px; }
+    .group-banner .group-name { font-size: 13px; }
+    .group-banner .group-commission { font-size: 10px; padding: 4px 10px; }
     .advantage-grid { gap: 10px; }
     .footer { padding: 20px 16px; }
   }
@@ -849,23 +984,15 @@
   <section class="hero-section">
     <h1 class="hero-title">达人 / KOC 合作招募</h1>
     <p class="hero-subtitle">纯佣金模式 · 高转化爆品 · 全链路支持</p>
-    <div class="commission-banner">
-      <div class="commission-number">
-        <div class="num">30%</div>
-        <div class="label">佣金比例</div>
-      </div>
-      <div class="commission-divider"></div>
-      <div class="commission-info">
-        <div class="main">纯佣金合作模式</div>
-        <div class="sub">
-          无保底要求<br>
-          高客单价 · 高复购率 · 高转化率
-        </div>
-      </div>
-    </div>
     <div class="mode-switch">
-      <button type="button" class="mode-btn active" data-mode="A" onclick="setCommissionMode('A')">A类合作模式<span class="mode-rate">30%</span></button>
-      <button type="button" class="mode-btn" data-mode="B" onclick="setCommissionMode('B')">B类合作模式<span class="mode-rate">25%</span></button>
+      <button type="button" class="mode-btn active" data-mode="A" onclick="setCommissionMode('A')">
+        A类合作模式
+        <span class="mode-sub">口服护肤 30% · 个护 25%</span>
+      </button>
+      <button type="button" class="mode-btn" data-mode="B" onclick="setCommissionMode('B')">
+        B类合作模式
+        <span class="mode-sub">口服护肤 25% · 个护 20%</span>
+      </button>
     </div>
   </section>
 
@@ -873,6 +1000,12 @@
   <section class="product-section">
     <h2 class="section-title">全品类产品矩阵 · 套餐佣金明细</h2>
     
+    <!-- 第一组：口服线 + 护肤线 -->
+    <div class="group-banner group-1">
+      <span class="group-name">口服线 + 护肤线</span>
+      <span class="group-commission">A类 30% · B类 25%</span>
+    </div>
+
     <!-- 口服线 -->
     <div class="category-title">GENEIII口服线</div>
     <div class="product-grid">
@@ -1220,6 +1353,12 @@
 
     </div>
 
+    <!-- 第二组：个护健康线 -->
+    <div class="group-banner group-1">
+      <span class="group-name">个护健康线</span>
+      <span class="group-commission">A类 25% · B类 20%</span>
+    </div>
+
     <!-- 个护线 -->
     <div class="category-title">个护健康线</div>
     <div class="product-grid">
@@ -1239,15 +1378,15 @@
         <div class="package-list">
           <div class="package-item">
             <div class="package-info"><span class="package-spec">1盒</span><span class="package-price">带货价 ¥119</span></div>
-            <div class="package-commission"><span class="commission-amount">¥35.70</span><span class="commission-label">达人佣金</span></div>
+            <div class="package-commission"><span class="commission-amount">¥29.75</span><span class="commission-label">达人佣金</span></div>
           </div>
           <div class="package-item">
             <div class="package-info"><span class="package-spec">2盒</span><span class="package-price">带货价 ¥198</span></div>
-            <div class="package-commission"><span class="commission-amount">¥59.40</span><span class="commission-label">达人佣金</span></div>
+            <div class="package-commission"><span class="commission-amount">¥49.50</span><span class="commission-label">达人佣金</span></div>
           </div>
           <div class="package-item is-special">
             <div class="package-info"><span class="package-spec">3盒</span><span class="package-price">带货价 ¥299</span></div>
-            <div class="package-commission"><span class="commission-amount">¥89.70</span><span class="commission-label">达人佣金</span></div>
+            <div class="package-commission"><span class="commission-amount">¥74.75</span><span class="commission-label">达人佣金</span></div>
           </div>
         </div>
       </div>
@@ -1267,15 +1406,15 @@
         <div class="package-list">
           <div class="package-item">
             <div class="package-info"><span class="package-spec">1盒</span><span class="package-price">带货价 ¥199</span></div>
-            <div class="package-commission"><span class="commission-amount">¥59.70</span><span class="commission-label">达人佣金</span></div>
+            <div class="package-commission"><span class="commission-amount">¥49.75</span><span class="commission-label">达人佣金</span></div>
           </div>
           <div class="package-item">
             <div class="package-info"><span class="package-spec">2盒</span><span class="package-price">带货价 ¥359</span></div>
-            <div class="package-commission"><span class="commission-amount">¥107.70</span><span class="commission-label">达人佣金</span></div>
+            <div class="package-commission"><span class="commission-amount">¥89.75</span><span class="commission-label">达人佣金</span></div>
           </div>
           <div class="package-item">
             <div class="package-info"><span class="package-spec">4盒</span><span class="package-price">带货价 ¥669</span></div>
-            <div class="package-commission"><span class="commission-amount">¥200.70</span><span class="commission-label">达人佣金</span></div>
+            <div class="package-commission"><span class="commission-amount">¥167.25</span><span class="commission-label">达人佣金</span></div>
           </div>
         </div>
       </div>
@@ -1535,9 +1674,9 @@ const productData = {
       {label: '功效', value: '眼部抗氧·舒缓'}
     ],
     packages: [
-      {spec: '1盒', price: '¥119', commission: '¥35.70', gift: '赠便携装0.5ml*5支*1盒'},
-      {spec: '2盒', price: '¥198', commission: '¥59.40', gift: '赠便携装0.5ml*5支*2盒'},
-      {spec: '3盒', price: '¥299', commission: '¥89.70', special: true, gift: '赠便携装0.5ml*5支*5盒'}
+      {spec: '1盒', price: '¥119', commission: '¥29.75', gift: '赠便携装0.5ml*5支*1盒'},
+      {spec: '2盒', price: '¥198', commission: '¥49.50', gift: '赠便携装0.5ml*5支*2盒'},
+      {spec: '3盒', price: '¥299', commission: '¥74.75', special: true, gift: '赠便携装0.5ml*5支*5盒'}
     ]
   },
   'eyewash-pure': {
@@ -1553,9 +1692,9 @@ const productData = {
       {label: '功效', value: '清洁·抗氧·舒缓'}
     ],
     packages: [
-      {spec: '1盒', price: '¥199', commission: '¥59.70', gift: '赠便携装0.5ml*5支*1盒'},
-      {spec: '2盒', price: '¥359', commission: '¥107.70', gift: '赠便携装0.5ml*5支*2盒'},
-      {spec: '4盒', price: '¥669', commission: '¥200.70', gift: '赠便携装0.5ml*5支*4盒'}
+      {spec: '1盒', price: '¥199', commission: '¥49.75', gift: '赠便携装0.5ml*5支*1盒'},
+      {spec: '2盒', price: '¥359', commission: '¥89.75', gift: '赠便携装0.5ml*5支*2盒'},
+      {spec: '4盒', price: '¥669', commission: '¥167.25', gift: '赠便携装0.5ml*5支*4盒'}
     ]
   },
   'capsule-30mg-60': {
@@ -1690,39 +1829,83 @@ const productData = {
   }
 };
 
-// ===== 合作模式切换（A类 30% / B类 25%）=====
+// ===== 产品分组与佣金率配置 =====
+// Group 1: GENEIII口服线 + 玻麦妍护肤线 → A:30%, B:25%
+// Group 2: 个护健康线 → A:25%, B:20%
+var PRODUCT_GROUP_MAP = {
+  // Group 1: 口服线
+  'capsule-30mg-60': 1,
+  'capsule-30mg-90': 1,
+  'capsule-50mg-60': 1,
+  'capsule-ovary': 1,
+  'capsule-liver': 1,
+  // Group 1: 护肤线
+  'skincare_2000ppm': 1,
+  'skincare_5000ppm': 1,
+  'skincare_5000ppm_white': 1,
+  'skincare_whitening_water': 1,
+  'skincare_breath_cream_2000_white': 1,
+  'skincare_lifting_cream_1000': 1,
+  'skincare_patch_mask_1000': 1,
+  // Group 2: 个护健康线
+  'eyewash-portable': 2,
+  'eyewash-pure': 2
+};
+
+var GROUP_RATES = {
+  1: { A: 0.30, B: 0.25 },
+  2: { A: 0.25, B: 0.20 }
+};
+
 var currentCommissionMode = 'A';
-var COMMISSION_RATES = { A: 0.30, B: 0.25 };
 var currentModalProductId = null;
 
-function commissionText(price) {
-  var val = Math.round(price * COMMISSION_RATES[currentCommissionMode] * 100) / 100;
+function getProductGroup(productId) {
+  return PRODUCT_GROUP_MAP[productId] || 1;
+}
+
+function getCommissionRate(productId) {
+  var group = getProductGroup(productId);
+  return GROUP_RATES[group][currentCommissionMode];
+}
+
+function commissionText(price, productId) {
+  var rate = getCommissionRate(productId);
+  var val = Math.round(price * rate * 100) / 100;
   return '¥' + val.toFixed(2);
 }
 
 function setCommissionMode(mode) {
   currentCommissionMode = mode;
-  var rate = COMMISSION_RATES[mode];
-  var percent = Math.round(rate * 100);
   // 按钮高亮
   document.querySelectorAll('.mode-btn').forEach(function(btn) {
     btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
   });
-  // 横幅佣金比例
-  var numEl = document.querySelector('.commission-number .num');
-  if (numEl) numEl.textContent = percent + '%';
-  // 卡片达人佣金
-  document.querySelectorAll('.package-item').forEach(function(item) {
-    var priceEl = item.querySelector('.package-price');
-    var amtEl = item.querySelector('.commission-amount');
-    if (priceEl && amtEl) {
-      var price = parseFloat(priceEl.textContent.replace(/[^\d.]/g, ''));
-      amtEl.textContent = commissionText(price);
-    }
+  // 遍历每个产品卡片，按其所属分组更新佣金
+  document.querySelectorAll('.product-card').forEach(function(card) {
+    // 从 onclick 属性提取产品ID
+    var onclickAttr = card.getAttribute('onclick') || '';
+    var match = onclickAttr.match(/openModal\('([^']+)'\)/);
+    var productId = match ? match[1] : null;
+    if (!productId) return;
+
+    card.querySelectorAll('.package-item').forEach(function(item) {
+      var priceEl = item.querySelector('.package-price');
+      var amtEl = item.querySelector('.commission-amount');
+      if (priceEl && amtEl) {
+        var price = parseFloat(priceEl.textContent.replace(/[^\d.]/g, ''));
+        amtEl.textContent = commissionText(price, productId);
+      }
+    });
   });
   // 弹窗标题与已打开弹窗内容
   var titleEl = document.getElementById('modalSectionTitle');
-  if (titleEl) titleEl.textContent = '套餐与佣金（' + percent + '%）';
+  if (titleEl && currentModalProductId) {
+    var group = getProductGroup(currentModalProductId);
+    var rate = Math.round(GROUP_RATES[group][mode] * 100);
+    var groupName = group === 1 ? '口服+护肤线' : '个护健康线';
+    titleEl.textContent = '套餐与佣金（' + groupName + ' ' + rate + '%）';
+  }
   if (currentModalProductId && document.getElementById('productModal').classList.contains('active')) {
     renderModalPackages(currentModalProductId);
   }
@@ -1741,7 +1924,7 @@ function renderModalPackages(productId) {
     '</div>' +
     (p.gift ? '<div class="modal-package-middle"><span class="modal-package-gift">' + p.gift + '</span></div>' : '<div class="modal-package-middle"><span class="modal-package-gift no-gift">无赠品</span></div>') +
     '<div class="modal-package-right">' +
-    '<div class="modal-package-commission-amount">' + commissionText(price) + '</div>' +
+    '<div class="modal-package-commission-amount">' + commissionText(price, productId) + '</div>' +
     '<div class="modal-package-commission-label">达人佣金</div>' +
     '</div></div>';
   }).join('');
@@ -1775,9 +1958,14 @@ function openModal(productId) {
   // 填充套餐（按当前合作模式计算佣金）
   renderModalPackages(productId);
   
-  // 弹窗标题同步当前模式
+  // 弹窗标题同步当前模式与产品组
   var titleEl = document.getElementById('modalSectionTitle');
-  if (titleEl) titleEl.textContent = '套餐与佣金（' + Math.round(COMMISSION_RATES[currentCommissionMode] * 100) + '%）';
+  if (titleEl) {
+    var group = getProductGroup(productId);
+    var rate = Math.round(GROUP_RATES[group][currentCommissionMode] * 100);
+    var groupName = group === 1 ? '口服+护肤线' : '个护健康线';
+    titleEl.textContent = '套餐与佣金（' + groupName + ' ' + rate + '%）';
+  }
   
   document.getElementById('productModal').classList.add('active');
   document.body.style.overflow = 'hidden';
