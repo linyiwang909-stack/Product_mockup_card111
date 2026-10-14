@@ -1419,9 +1419,9 @@
         <div class="product-card" onclick="openModal('skincare_5000ppm')">
           <div class="product-top">
             <div class="product-image"><img loading="lazy" id="card-img-skincare_5000ppm" src="Gene_img/image_028.webp"
-                alt="5000PPM御龄奢养次抛精华"></div>
+                alt="5000PPM麦角硫因御龄奢养次抛精华液"></div>
             <div class="product-name-wrap">
-              <div class="product-name">5000PPM御龄奢养次抛精华</div>
+              <div class="product-name">5000PPM麦角硫因御龄奢养次抛精华液</div>
               <span class="product-tag">抗老天花板</span>
               <ul class="product-selling-points">
                 <li>抗衰天花板 淡纹紧致</li>
@@ -1450,7 +1450,7 @@
             <div class="product-image"><img loading="lazy" id="card-img-skincare_5000ppm_white"
                 src="Gene_img/image_028.webp" alt="5000PPM美白特证次抛"></div>
             <div class="product-name-wrap">
-              <div class="product-name">5000PPM次抛精华【美白特证款】</div>
+              <div class="product-name">5000ppm美白淡斑御龄次抛精华</div>
               <span class="product-tag">持证美白抗老</span>
               <ul class="product-selling-points">
                 <li>美白特证 抗老淡斑</li>
@@ -1634,14 +1634,14 @@
 
       </div>
 
-      <!-- 第二组：个护健康线 -->
+      <!-- 第二组：个护线 -->
       <div class="group-banner group-1">
-        <span class="group-name">个护健康线</span>
+        <span class="group-name">个护线</span>
         <span class="group-commission">A类 25% · B类 20%</span>
       </div>
 
-      <!-- 个护线 -->
-      <div class="category-title">个护健康线</div>
+      <!-- GENEIII个护线 -->
+      <div class="category-title">GENEIII个护线</div>
       <div class="product-grid">
 
         <div class="product-card" onclick="openModal('eyewash-portable')">
@@ -1649,7 +1649,7 @@
             <div class="product-image"><img loading="lazy" id="card-img-eyewash-portable" src="Gene_img/image_010.webp"
                 alt="洗眼液便携版"></div>
             <div class="product-name-wrap">
-              <div class="product-name">仅三麦角硫因洗眼液（便携版）</div>
+              <div class="product-name">GENEIII麦角硫因洗眼液（便携版）</div>
               <span class="product-tag">眼部抗氧</span>
               <ul class="product-selling-points">
                 <li>眼部抗氧，告别"人老珠黄"</li>
@@ -1684,7 +1684,7 @@
             <div class="product-image"><img loading="lazy" id="card-img-eyewash-pure" src="Gene_img/image_009.webp"
                 alt="洗眼液纯洗版"></div>
             <div class="product-name-wrap">
-              <div class="product-name">仅三麦角硫因洗眼液（纯洗版）</div>
+              <div class="product-name">GENEIII麦角硫因洗眼液（纯洗版）</div>
               <span class="product-tag">大容量纯洗</span>
               <ul class="product-selling-points">
                 <li>眼部抗氧，告别"人老珠黄"</li>
@@ -1847,7 +1847,7 @@
       ]
     },
     'skincare_5000ppm': {
-      name: '5000PPM御龄奢养次抛精华',
+      name: '5000PPM麦角硫因御龄奢养次抛精华液',
       tag: '抗老天花板',
       desc: '抗老天花板，麦角硫因细胞级抗氧',
       image: 'assets/product_skincare_5000ppm.png',
@@ -1869,7 +1869,7 @@
       ]
     },
     'skincare_5000ppm_white': {
-      name: '5000PPM次抛精华【美白特证款】',
+      name: '5000ppm美白淡斑御龄次抛精华',
       tag: '持证美白抗老',
       desc: '美白特证款，5000PPM麦角硫因',
       image: 'assets/product_skincare_5000ppm.png',
@@ -2003,7 +2003,7 @@
       ]
     },
     'eyewash-portable': {
-      name: '仅三麦角硫因洗眼液（便携版）',
+      name: 'GENEIII麦角硫因洗眼液（便携版）',
       tag: '眼部抗氧',
       desc: '眼部抗氧，告别"人老珠黄"，人体临床报告官网可查',
       image: 'assets/product_eyewash_portable.png',
@@ -2021,7 +2021,7 @@
       ]
     },
     'eyewash-pure': {
-      name: '仅三麦角硫因洗眼液（纯洗版）',
+      name: 'GENEIII麦角硫因洗眼液（纯洗版）',
       tag: '大容量纯洗',
       desc: '眼部抗氧，大容量家庭装，日常护眼必备',
       image: 'assets/product_eyewash_pure.png',
@@ -2172,7 +2172,7 @@
 
   // ===== 产品分组与佣金率配置 =====
   // Group 1: GENEIII口服线 + 玻麦妍护肤线 → A:30%, B:25%
-  // Group 2: 个护健康线 → A:25%, B:20%
+  // Group 2: GENEIII个护线 → A:25%, B:20%
   var PRODUCT_GROUP_MAP = {
     // Group 1: 口服线
     'capsule-30mg-60': 1,
@@ -2188,7 +2188,7 @@
     'skincare_breath_cream_2000_white': 1,
     'skincare_lifting_cream_1000': 1,
     'skincare_patch_mask_1000': 1,
-    // Group 2: 个护健康线
+    // Group 2: GENEIII个护线
     'eyewash-portable': 2,
     'eyewash-pure': 2
   };
@@ -2244,7 +2244,7 @@
     if (titleEl && currentModalProductId) {
       var group = getProductGroup(currentModalProductId);
       var rate = Math.round(GROUP_RATES[group][mode] * 100);
-      var groupName = group === 1 ? '口服+护肤线' : '个护健康线';
+      var groupName = group === 1 ? '口服+护肤线' : 'GENEIII个护线';
       titleEl.textContent = '套餐与佣金（' + groupName + ' ' + rate + '%）';
     }
     if (currentModalProductId && document.getElementById('productModal').classList.contains('active')) {
@@ -2304,7 +2304,7 @@
     if (titleEl) {
       var group = getProductGroup(productId);
       var rate = Math.round(GROUP_RATES[group][currentCommissionMode] * 100);
-      var groupName = group === 1 ? '口服+护肤线' : '个护健康线';
+      var groupName = group === 1 ? '口服+护肤线' : 'GENEIII个护线';
       titleEl.textContent = '套餐与佣金（' + groupName + ' ' + rate + '%）';
     }
 
