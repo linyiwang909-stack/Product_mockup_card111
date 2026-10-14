@@ -1,1991 +1,2332 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>仅三生物 · 达人KOC合作产品模卡</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a5c3a'/%3E%3Ctext x='32' y='44' font-size='32' font-family='serif' text-anchor='middle' fill='%23a8d5ba'%3E仅%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #e8f0eb;
-    color: #1a3a2a;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-
-  .card-container {
-    max-width: 960px;
-    margin: 0 auto;
-    background: #f8fbf9;
-    box-shadow: 0 10px 60px rgba(26, 92, 58, 0.15);
-    overflow: hidden;
-  }
-
-  /* ===== 顶部品牌区 ===== */
-  .header {
-    background: linear-gradient(135deg, #0d3320 0%, #1a5c3a 50%, #2d7a4f 100%);
-    color: #d4edda;
-    padding: 44px 40px 36px;
-    text-align: center;
-    position: relative;
-  }
-
-  .header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #4caf7d, #a8d5ba, #4caf7d);
-  }
-
-  .brand-name {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 34px;
-    font-weight: 900;
-    letter-spacing: 8px;
-    color: #a8d5ba;
-    margin-bottom: 6px;
-  }
-
-  .brand-sub {
-    font-size: 14px;
-    letter-spacing: 4px;
-    color: #7cc09a;
-    font-weight: 300;
-  }
-
-  .brand-tagline {
-    margin-top: 16px;
-    font-size: 12px;
-    color: #6bb389;
-    letter-spacing: 2px;
-  }
-
-  /* ===== 佣金展示区 ===== */
-  .hero-section {
-    padding: 32px 40px;
-    text-align: center;
-    background: #f8fbf9;
-  }
-
-  .hero-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #1a3a2a;
-    margin-bottom: 8px;
-    letter-spacing: 2px;
-  }
-
-  .hero-subtitle {
-    font-size: 14px;
-    color: #4a7a5e;
-    letter-spacing: 1px;
-    margin-bottom: 24px;
-  }
-
-  .commission-banner {
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    gap: 0;
-    background: linear-gradient(135deg, #0d3320 0%, #1a5c3a 50%, #2d7a4f 100%);
-    padding: 0;
-    margin: 0 8px;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(26, 92, 58, 0.3);
-    overflow: hidden;
-    position: relative;
-  }
-  .commission-banner::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(168,213,186,0.5), transparent);
-  }
-
-  .dual-banner {
-    gap: 0;
-  }
-  .commission-group {
-    flex: 1;
-    text-align: center;
-    padding: 26px 20px;
-    position: relative;
-  }
-  .commission-group + .commission-group::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 20%;
-    height: 60%;
-    width: 1px;
-    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.2), transparent);
-  }
-  .group-tag {
-    display: inline-block;
-    font-size: 10px;
-    letter-spacing: 2px;
-    padding: 3px 12px;
-    border-radius: 20px;
-    margin-bottom: 12px;
-    background: rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.85);
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-  .group-label {
-    font-size: 13px;
-    color: rgba(255,255,255,0.9);
-    letter-spacing: 1px;
-    margin-bottom: 14px;
-    font-weight: 500;
-  }
-  .group-rates {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-  }
-  .rate-block {
-    text-align: center;
-  }
-  .rate-block .rate-num {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 36px;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.15);
-  }
-  .rate-block .rate-label {
-    font-size: 10px;
-    color: rgba(255,255,255,0.65);
-    margin-top: 4px;
-    letter-spacing: 1.5px;
-  }
-  .rate-sep {
-    font-size: 16px;
-    color: rgba(255,255,255,0.3);
-    font-weight: 300;
-  }
-
-  .commission-number { text-align: center; }
-  .commission-number .num {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 52px;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1;
-  }
-  .commission-number .label {
-    font-size: 12px;
-    color: #d4edda;
-    margin-top: 4px;
-    letter-spacing: 2px;
-  }
-
-  .commission-divider {
-    width: 1px;
-    height: 56px;
-    background: rgba(255,255,255,0.3);
-  }
-
-  .commission-info { text-align: left; }
-  .commission-info .main {
-    font-size: 17px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 4px;
-  }
-  .commission-info .sub {
-    font-size: 12px;
-    color: #b8dfc7;
-    line-height: 1.8;
-  }
-
-  /* ===== 合作模式切换 ===== */
-  .mode-switch {
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    margin: 28px 8px 0;
-    flex-wrap: wrap;
-  }
-  .mode-btn {
-    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    color: #1a5c3a;
-    background: #fff;
-    border: 2.5px solid #c3dccb;
-    border-radius: 16px;
-    padding: 20px 44px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    line-height: 1.2;
-    box-shadow: 0 4px 16px rgba(26, 92, 58, 0.08);
-    min-width: 260px;
-  }
-  .mode-btn .mode-sub {
-    font-size: 13px;
-    font-weight: 400;
-    color: #8aa898;
-    letter-spacing: 0.5px;
-  }
-  .mode-btn:hover {
-    border-color: #a8d5ba;
-    box-shadow: 0 6px 20px rgba(26, 92, 58, 0.12);
-    transform: translateY(-2px);
-  }
-  .mode-btn.active {
-    background: linear-gradient(135deg, #2d7a4f 0%, #1a5c3a 100%);
-    color: #fff;
-    border-color: transparent;
-    box-shadow: 0 8px 28px rgba(45, 122, 79, 0.35);
-  }
-  .mode-btn.active .mode-sub {
-    color: #b8dfc7;
-  }
-
-  /* 选中按钮呼吸光晕：阴影轻轻放大再收回 */
-  @keyframes modeGlow {
-    0%, 100% { box-shadow: 0 6px 18px rgba(45, 122, 79, 0.35); }
-    50%      { box-shadow: 0 12px 34px rgba(45, 122, 79, 0.62); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .mode-btn.active { animation: none; }
-  }
-
-  /* ===== 产品线区域 ===== */
-  .product-section { padding: 32px 24px; }
-
-  .section-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: #1a3a2a;
-    text-align: center;
-    margin-bottom: 24px;
-    position: relative;
-  }
-  .section-title::before,
-  .section-title::after {
-    content: '';
-    display: inline-block;
-    width: 36px;
-    height: 1px;
-    background: #4caf7d;
-    vertical-align: middle;
-    margin: 0 14px;
-  }
-
-  .category-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: #1a5c3a;
-    margin: 24px 8px 14px;
-    padding-left: 10px;
-    border-left: 4px solid #4caf7d;
-  }
-
-  .group-banner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 12px 18px;
-    margin: 32px 0 16px;
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
-  }
-  .group-banner::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-    background: linear-gradient(180deg, #2d7a4f, #4caf7d);
-  }
-  .group-banner.group-1 {
-    background: linear-gradient(90deg, rgba(232,245,236,0.8) 0%, rgba(240,249,244,0.4) 100%);
-  }
-  .group-banner .group-name {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: #1a5c3a;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .group-banner .group-name::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #4caf7d;
-  }
-  .group-banner .group-commission {
-    font-size: 11px;
-    font-weight: 600;
-    color: #2d7a4f;
-    background: #fff;
-    padding: 5px 14px;
-    border-radius: 20px;
-    border: 1px solid #d4edda;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 6px rgba(26, 92, 58, 0.08);
-  }
-
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  .product-card {
-    background: #fff;
-    border: 1px solid #d4edda;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .product-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(26, 92, 58, 0.12);
-  }
-
-  .product-top {
-    display: flex;
-    padding: 14px;
-    gap: 12px;
-    border-bottom: 1px solid #eef5f0;
-  }
-
-  .product-image {
-    width: 90px;
-    height: 90px;
-    min-width: 90px;
-    background: #ffffff;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .product-image img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-  }
-
-  .product-image .icon-placeholder {
-    width: 40px;
-    height: 40px;
-    background: rgba(76, 175, 125, 0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .product-image .icon-placeholder svg {
-    width: 22px;
-    height: 22px;
-    stroke: #4caf7d;
-    fill: none;
-    stroke-width: 1.5;
-  }
-
-  .product-name-wrap {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .product-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: #1a3a2a;
-    line-height: 1.4;
-    margin-bottom: 6px;
-  }
-
-  .product-tag {
-    display: inline-block;
-    font-size: 10px;
-    color: #2d7a4f;
-    background: #e8f5ec;
-    padding: 2px 8px;
-    border-radius: 10px;
-    align-self: flex-start;
-  }
-
-  .product-selling-points {
-    font-size: 11px;
-    color: #5a7a68;
-    line-height: 1.5;
-    margin-top: 6px;
-    padding-left: 8px;
-    border-left: 2px solid #a8d5ba;
-  }
-  .product-selling-points li {
-    margin-bottom: 2px;
-    list-style: none;
-    position: relative;
-    padding-left: 10px;
-  }
-  .product-selling-points li::before {
-    content: "•";
-    color: #4caf7d;
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-  }
-
-  .package-list {
-    padding: 10px 14px 14px;
-  }
-
-  .package-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 7px 6px;
-    border-bottom: 1px dashed #eef5f0;
-  }
-  .package-item:last-child { border-bottom: none; }
-  .package-item.is-special {
-    position: relative;
-    border: 1px solid #f5d68a;
-    border-radius: 6px;
-    padding: 14px 6px 7px 6px;
-    margin: 4px 0;
-    background: linear-gradient(135deg, #fffdf5 0%, #fffef9 100%);
-  }
-  .package-item.is-special::after {
-    content: '专场申请';
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(135deg, #f5a623, #e8941a);
-    color: #fff;
-    font-size: 9px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 6px 0 6px 0;
-    letter-spacing: 0.5px;
-  }
-  .modal-package-row.is-special {
-    position: relative;
-    border: 1px solid #f5d68a;
-    border-radius: 8px;
-    background: #fffdf5;
-    padding: 22px 12px 12px 12px;
-    margin: 6px 0;
-  }
-  .modal-package-row.is-special::after {
-    content: '专场申请';
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(135deg, #f5a623, #e8941a);
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 8px 0 6px 0;
-  }
-
-
-  .package-info {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .package-spec {
-    font-size: 12px;
-    color: #3a5a48;
-    font-weight: 500;
-  }
-
-  .package-price {
-    font-size: 11px;
-    color: #8b9a90;
-    margin-top: 1px;
-  }
-
-  .package-commission {
-    text-align: right;
-  }
-
-  .commission-amount {
-    font-size: 15px;
-    font-weight: 800;
-    color: #1a5c3a;
-  }
-  .commission-amount::before {
-    content: '约';
-    font-size: 11px;
-    font-weight: 500;
-    margin-right: 1px;
-  }
-
-  .commission-label {
-    font-size: 10px;
-    color: #6b8a78;
-    display: block;
-  }
-
-  .hot-tag {
-    display: inline-block;
-    font-size: 9px;
-    color: #fff;
-    background: linear-gradient(135deg, #e67e22, #d35400);
-    padding: 1px 6px;
-    border-radius: 8px;
-    margin-left: 4px;
-    vertical-align: middle;
-  }
-
-  /* ===== 品牌优势区 ===== */
-  .advantage-section {
-    padding: 28px 40px;
-    background: #eef5f0;
-    border-top: 1px solid #d4edda;
-    border-bottom: 1px solid #d4edda;
-  }
-
-  .advantage-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
-  .advantage-item {
-    text-align: center;
-    padding: 12px 8px;
-  }
-
-  .advantage-icon {
-    width: 36px;
-    height: 36px;
-    margin: 0 auto 8px;
-    background: #fff;
-    border: 1.5px solid #4caf7d;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .advantage-icon svg {
-    width: 18px;
-    height: 18px;
-    stroke: #4caf7d;
-    fill: none;
-    stroke-width: 1.5;
-  }
-
-  .advantage-text {
-    font-size: 11px;
-    color: #2d5a3f;
-    font-weight: 500;
-    line-height: 1.4;
-  }
-
-  /* ===== 弹窗样式 ===== */
-  .product-card {
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .product-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(26, 92, 58, 0.12);
-  }
-
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  .modal-overlay.active {
-    display: flex;
-  }
-
-  .modal-content {
-    background: #fff;
-    border-radius: 16px;
-    max-width: 560px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    animation: modalSlideUp 0.3s ease;
-  }
-
-  @keyframes modalSlideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #f0f5f2;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: background 0.2s;
-  }
-  .modal-close:hover {
-    background: #e0ebe4;
-  }
-  .modal-close svg {
-    width: 16px;
-    height: 16px;
-    stroke: #2d5a3f;
-    stroke-width: 2;
-  }
-
-  .modal-header {
-    background: linear-gradient(135deg, #1a5c3a 0%, #2d7a4f 100%);
-    padding: 28px 24px 24px;
-    color: #fff;
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-
-  .modal-product-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 12px;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    overflow: hidden;
-  }
-  .modal-product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .modal-product-info h3 {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    line-height: 1.4;
-  }
-  .modal-product-tag {
-    display: inline-block;
-    font-size: 11px;
-    background: rgba(255,255,255,0.2);
-    padding: 3px 10px;
-    border-radius: 10px;
-    margin-bottom: 8px;
-  }
-  .modal-product-desc {
-    font-size: 12px;
-    opacity: 0.9;
-    line-height: 1.5;
-  }
-
-  .modal-body {
-    padding: 24px;
-  }
-
-  .modal-section {
-    margin-bottom: 20px;
-  }
-  .modal-section:last-child {
-    margin-bottom: 0;
-  }
-
-  .modal-section-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: #1a5c3a;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .modal-section-title::before {
-    content: "";
-    width: 3px;
-    height: 14px;
-    background: #4caf7d;
-    border-radius: 2px;
-  }
-
-  .modal-selling-points {
-    list-style: none;
-    padding: 0;
-  }
-  .modal-selling-points li {
-    font-size: 13px;
-    color: #3a5a48;
-    line-height: 1.8;
-    padding-left: 18px;
-    position: relative;
-  }
-  .modal-selling-points li::before {
-    content: "✓";
-    color: #4caf7d;
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-  }
-
-  .modal-specs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  .modal-spec-item {
-    background: #f5f9f7;
-    border-radius: 8px;
-    padding: 10px 12px;
-  }
-  .modal-spec-label {
-    font-size: 11px;
-    color: #8b9a90;
-    margin-bottom: 3px;
-  }
-  .modal-spec-value {
-    font-size: 13px;
-    color: #2d5a3f;
-    font-weight: 600;
-  }
-
-  .modal-packages {
-    border: 1px solid #e0ebe4;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .modal-package-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 16px;
-    border-bottom: 1px solid #f0f5f2;
-  }
-  .modal-package-row:last-child {
-    border-bottom: none;
-  }
-  .modal-package-left {
-    text-align: left;
-  }
-  .modal-package-spec {
-    font-size: 14px;
-    color: #2d4a3a;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .modal-package-price {
-    font-size: 12px;
-    color: #8b9a90;
-  }
-  .modal-package-gift {
-    font-size: 11px;
-    color: #c8860a;
-    font-weight: 500;
-  }
-  .modal-package-gift.no-gift {
-    color: #bbb;
-  }
-  .modal-package-right {
-    text-align: right;
-  }
-  .modal-package-middle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .modal-gift-img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-    border-radius: 6px;
-    background: #f5f9f6;
-    padding: 2px;
-  }
-  .modal-package-commission-amount {
-    font-size: 18px;
-    font-weight: 800;
-    color: #1a5c3a;
-    margin-bottom: 2px;
-  }
-  .modal-package-commission-amount::before {
-    content: '约';
-    font-size: 12px;
-    font-weight: 500;
-    margin-right: 1px;
-  }
-  .modal-package-commission-label {
-    font-size: 11px;
-    color: #8b9a90;
-  }
-  .modal-commission-label {
-    font-size: 10px;
-    color: #6b8a78;
-  }
-
-  /* ===== 底部合作区 ===== */
-  .footer {
-    background: linear-gradient(135deg, #0d3320 0%, #1a5c3a 100%);
-    color: #d4edda;
-    padding: 32px 40px;
-    text-align: center;
-  }
-
-  .footer-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #a8d5ba;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-  }
-
-  .footer-sub {
-    font-size: 12px;
-    color: #7cc09a;
-    margin-bottom: 16px;
-    letter-spacing: 1px;
-  }
-
-  .footer-tags {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .footer-tag {
-    background: rgba(76, 175, 125, 0.15);
-    border: 1px solid rgba(76, 175, 125, 0.3);
-    color: #7cc09a;
-    padding: 5px 14px;
-    border-radius: 18px;
-    font-size: 11px;
-  }
-
-  .contact-hint {
-    margin-top: 16px;
-    font-size: 11px;
-    color: #5a9a78;
-    padding-top: 14px;
-    border-top: 1px solid rgba(76, 175, 125, 0.2);
-  }
-
-  /* ===== 响应式 ===== */
-  @media (max-width: 768px) {
-    .product-grid { grid-template-columns: 1fr; }
-    .advantage-grid { grid-template-columns: repeat(2, 1fr); }
-    .mode-btn {
-      padding: 18px 30px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>仅三生物 · 达人KOC合作产品模卡</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a5c3a'/%3E%3Ctext x='32' y='44' font-size='32' font-family='serif' text-anchor='middle' fill='%23a8d5ba'%3E仅%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet"
+    href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #e8f0eb;
+      color: #1a3a2a;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .card-container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #f8fbf9;
+      box-shadow: 0 10px 60px rgba(26, 92, 58, 0.15);
+      overflow: hidden;
+    }
+
+    /* ===== 顶部品牌区 ===== */
+    .header {
+      background: linear-gradient(135deg, #0d3320 0%, #1a5c3a 50%, #2d7a4f 100%);
+      color: #d4edda;
+      padding: 44px 40px 36px;
+      text-align: center;
+      position: relative;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #4caf7d, #a8d5ba, #4caf7d);
+    }
+
+    .brand-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: 8px;
+      color: #a8d5ba;
+      margin-bottom: 6px;
+    }
+
+    .brand-sub {
+      font-size: 14px;
+      letter-spacing: 4px;
+      color: #7cc09a;
+      font-weight: 300;
+    }
+
+    .brand-tagline {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #6bb389;
+      letter-spacing: 2px;
+    }
+
+    /* ===== 佣金展示区 ===== */
+    .hero-section {
+      padding: 32px 40px;
+      text-align: center;
+      background: #f8fbf9;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #1a3a2a;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: #4a7a5e;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .commission-banner {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0;
+      background: linear-gradient(135deg, #0d3320 0%, #1a5c3a 50%, #2d7a4f 100%);
+      padding: 0;
+      margin: 0 8px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(26, 92, 58, 0.3);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .commission-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(168, 213, 186, 0.5), transparent);
+    }
+
+    .dual-banner {
+      gap: 0;
+    }
+
+    .commission-group {
+      flex: 1;
+      text-align: center;
+      padding: 26px 20px;
+      position: relative;
+    }
+
+    .commission-group+.commission-group::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    }
+
+    .group-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 2px;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .group-label {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .group-rates {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .rate-block {
+      text-align: center;
+    }
+
+    .rate-block .rate-num {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .rate-block .rate-label {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.65);
+      margin-top: 4px;
+      letter-spacing: 1.5px;
+    }
+
+    .rate-sep {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.3);
+      font-weight: 300;
+    }
+
+    .commission-number {
+      text-align: center;
+    }
+
+    .commission-number .num {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 52px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .commission-number .label {
+      font-size: 12px;
+      color: #d4edda;
+      margin-top: 4px;
+      letter-spacing: 2px;
+    }
+
+    .commission-divider {
+      width: 1px;
+      height: 56px;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .commission-info {
+      text-align: left;
+    }
+
+    .commission-info .main {
       font-size: 17px;
-      min-width: 210px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
     }
-    .mode-btn .mode-sub { font-size: 12px; }
-    .header, .hero-section, .product-section, .advantage-section, .footer {
-      padding-left: 16px;
-      padding-right: 16px;
+
+    .commission-info .sub {
+      font-size: 12px;
+      color: #b8dfc7;
+      line-height: 1.8;
     }
-    .brand-name { font-size: 26px; letter-spacing: 4px; }
-    .hero-title { font-size: 22px; }
-  }
 
-  /* ===== 手机端精调（≤480px） ===== */
-  @media (max-width: 480px) {
-    .header { padding: 26px 16px 24px; }
-    .brand-name { font-size: 21px; letter-spacing: 2px; }
-    .brand-sub { font-size: 12px; letter-spacing: 2px; }
-    .brand-tagline { font-size: 11px; letter-spacing: 1px; }
-    .hero-section { padding: 20px 16px; }
-    .hero-title { font-size: 19px; letter-spacing: 1px; }
-    .hero-subtitle { font-size: 12px; margin-bottom: 14px; }
-    .mode-btn { padding: 16px 26px; font-size: 16px; min-width: 190px; }
-    .mode-btn .mode-sub { font-size: 11px; }
-    .group-banner { padding: 10px 14px; margin: 24px 0 12px; }
-    .group-banner .group-name { font-size: 13px; }
-    .group-banner .group-commission { font-size: 10px; padding: 4px 10px; }
-    .advantage-grid { gap: 10px; }
-    .footer { padding: 20px 16px; }
-  }
+    /* ===== 合作模式切换 ===== */
+    .mode-switch {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin: 28px 8px 0;
+      flex-wrap: wrap;
+    }
 
-  /* ===== 触屏设备：取消粘滞 hover 态 ===== */
-  @media (hover: none) {
-    .product-card:hover { transform: none !important; }
-  }
+    .mode-btn {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #1a5c3a;
+      background: #fff;
+      border: 2.5px solid #c3dccb;
+      border-radius: 16px;
+      padding: 20px 44px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.2;
+      box-shadow: 0 4px 16px rgba(26, 92, 58, 0.08);
+      min-width: 260px;
+    }
 
-  @media print {
-    body { background: #fff; }
-    .card-container { box-shadow: none; }
-    .product-card:hover { transform: none; box-shadow: none; }
-  }
-</style>
+    .mode-btn .mode-sub {
+      font-size: 13px;
+      font-weight: 400;
+      color: #8aa898;
+      letter-spacing: 0.5px;
+    }
+
+    .mode-btn:hover {
+      border-color: #a8d5ba;
+      box-shadow: 0 6px 20px rgba(26, 92, 58, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .mode-btn.active {
+      background: linear-gradient(135deg, #2d7a4f 0%, #1a5c3a 100%);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 8px 28px rgba(45, 122, 79, 0.35);
+    }
+
+    .mode-btn.active .mode-sub {
+      color: #b8dfc7;
+    }
+
+    /* 选中按钮呼吸光晕：阴影轻轻放大再收回 */
+    @keyframes modeGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 6px 18px rgba(45, 122, 79, 0.35);
+      }
+
+      50% {
+        box-shadow: 0 12px 34px rgba(45, 122, 79, 0.62);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mode-btn.active {
+        animation: none;
+      }
+    }
+
+    /* ===== 产品线区域 ===== */
+    .product-section {
+      padding: 32px 24px;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a3a2a;
+      text-align: center;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: '';
+      display: inline-block;
+      width: 36px;
+      height: 1px;
+      background: #4caf7d;
+      vertical-align: middle;
+      margin: 0 14px;
+    }
+
+    .category-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a5c3a;
+      margin: 24px 8px 14px;
+      padding-left: 10px;
+      border-left: 4px solid #4caf7d;
+    }
+
+    .group-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 12px 18px;
+      margin: 32px 0 16px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .group-banner::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #2d7a4f, #4caf7d);
+    }
+
+    .group-banner.group-1 {
+      background: linear-gradient(90deg, rgba(232, 245, 236, 0.8) 0%, rgba(240, 249, 244, 0.4) 100%);
+    }
+
+    .group-banner .group-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a5c3a;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .group-banner .group-name::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4caf7d;
+    }
+
+    .group-banner .group-commission {
+      font-size: 11px;
+      font-weight: 600;
+      color: #2d7a4f;
+      background: #fff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1px solid #d4edda;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 6px rgba(26, 92, 58, 0.08);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .product-card {
+      background: #fff;
+      border: 1px solid #d4edda;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(26, 92, 58, 0.12);
+    }
+
+    .product-top {
+      display: flex;
+      padding: 14px;
+      gap: 12px;
+      border-bottom: 1px solid #eef5f0;
+    }
+
+    .product-image {
+      width: 90px;
+      height: 90px;
+      min-width: 90px;
+      background: #ffffff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .product-image .icon-placeholder {
+      width: 40px;
+      height: 40px;
+      background: rgba(76, 175, 125, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image .icon-placeholder svg {
+      width: 22px;
+      height: 22px;
+      stroke: #4caf7d;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .product-name-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .product-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1a3a2a;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .product-tag {
+      display: inline-block;
+      font-size: 10px;
+      color: #2d7a4f;
+      background: #e8f5ec;
+      padding: 2px 8px;
+      border-radius: 10px;
+      align-self: flex-start;
+    }
+
+    .product-selling-points {
+      font-size: 11px;
+      color: #5a7a68;
+      line-height: 1.5;
+      margin-top: 6px;
+      padding-left: 8px;
+      border-left: 2px solid #a8d5ba;
+    }
+
+    .product-selling-points li {
+      margin-bottom: 2px;
+      list-style: none;
+      position: relative;
+      padding-left: 10px;
+    }
+
+    .product-selling-points li::before {
+      content: "•";
+      color: #4caf7d;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .package-list {
+      padding: 10px 14px 14px;
+    }
+
+    .package-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 6px;
+      border-bottom: 1px dashed #eef5f0;
+    }
+
+    .package-item:last-child {
+      border-bottom: none;
+    }
+
+    .package-item.is-special {
+      position: relative;
+      border: 1px solid #f5d68a;
+      border-radius: 6px;
+      padding: 14px 6px 7px 6px;
+      margin: 4px 0;
+      background: linear-gradient(135deg, #fffdf5 0%, #fffef9 100%);
+    }
+
+    .package-item.is-special::after {
+      content: '专场申请';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(135deg, #f5a623, #e8941a);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px 0 6px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .modal-package-row.is-special {
+      position: relative;
+      border: 1px solid #f5d68a;
+      border-radius: 8px;
+      background: #fffdf5;
+      padding: 22px 12px 12px 12px;
+      margin: 6px 0;
+    }
+
+    .modal-package-row.is-special::after {
+      content: '专场申请';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(135deg, #f5a623, #e8941a);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 8px 0 6px 0;
+    }
+
+
+    .package-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .package-spec {
+      font-size: 12px;
+      color: #3a5a48;
+      font-weight: 500;
+    }
+
+    .package-price {
+      font-size: 11px;
+      color: #8b9a90;
+      margin-top: 1px;
+    }
+
+    .package-commission {
+      text-align: right;
+    }
+
+    .commission-amount {
+      font-size: 15px;
+      font-weight: 800;
+      color: #1a5c3a;
+    }
+
+    .commission-amount::before {
+      content: '约';
+      font-size: 11px;
+      font-weight: 500;
+      margin-right: 1px;
+    }
+
+    .commission-label {
+      font-size: 10px;
+      color: #6b8a78;
+      display: block;
+    }
+
+    .hot-tag {
+      display: inline-block;
+      font-size: 9px;
+      color: #fff;
+      background: linear-gradient(135deg, #e67e22, #d35400);
+      padding: 1px 6px;
+      border-radius: 8px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    /* ===== 品牌优势区 ===== */
+    .advantage-section {
+      padding: 28px 40px;
+      background: #eef5f0;
+      border-top: 1px solid #d4edda;
+      border-bottom: 1px solid #d4edda;
+    }
+
+    .advantage-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .advantage-item {
+      text-align: center;
+      padding: 12px 8px;
+    }
+
+    .advantage-icon {
+      width: 36px;
+      height: 36px;
+      margin: 0 auto 8px;
+      background: #fff;
+      border: 1.5px solid #4caf7d;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .advantage-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: #4caf7d;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .advantage-text {
+      font-size: 11px;
+      color: #2d5a3f;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ===== 弹窗样式 ===== */
+    .product-card {
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26, 92, 58, 0.12);
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 560px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: modalSlideUp 0.3s ease;
+    }
+
+    @keyframes modalSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #f0f5f2;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #e0ebe4;
+    }
+
+    .modal-close svg {
+      width: 16px;
+      height: 16px;
+      stroke: #2d5a3f;
+      stroke-width: 2;
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, #1a5c3a 0%, #2d7a4f 100%);
+      padding: 28px 24px 24px;
+      color: #fff;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .modal-product-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 12px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .modal-product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .modal-product-info h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .modal-product-tag {
+      display: inline-block;
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 3px 10px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+    }
+
+    .modal-product-desc {
+      font-size: 12px;
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    .modal-body {
+      padding: 24px;
+    }
+
+    .modal-section {
+      margin-bottom: 20px;
+    }
+
+    .modal-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .modal-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a5c3a;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .modal-section-title::before {
+      content: "";
+      width: 3px;
+      height: 14px;
+      background: #4caf7d;
+      border-radius: 2px;
+    }
+
+    .modal-selling-points {
+      list-style: none;
+      padding: 0;
+    }
+
+    .modal-selling-points li {
+      font-size: 13px;
+      color: #3a5a48;
+      line-height: 1.8;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .modal-selling-points li::before {
+      content: "✓";
+      color: #4caf7d;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .modal-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .modal-spec-item {
+      background: #f5f9f7;
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+
+    .modal-spec-label {
+      font-size: 11px;
+      color: #8b9a90;
+      margin-bottom: 3px;
+    }
+
+    .modal-spec-value {
+      font-size: 13px;
+      color: #2d5a3f;
+      font-weight: 600;
+    }
+
+    .modal-packages {
+      border: 1px solid #e0ebe4;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .modal-package-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid #f0f5f2;
+    }
+
+    .modal-package-row:last-child {
+      border-bottom: none;
+    }
+
+    .modal-package-left {
+      text-align: left;
+    }
+
+    .modal-package-spec {
+      font-size: 14px;
+      color: #2d4a3a;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .modal-package-price {
+      font-size: 12px;
+      color: #8b9a90;
+    }
+
+    .modal-package-gift {
+      font-size: 11px;
+      color: #c8860a;
+      font-weight: 500;
+    }
+
+    .modal-package-gift.no-gift {
+      color: #bbb;
+    }
+
+    .modal-package-right {
+      text-align: right;
+    }
+
+    .modal-package-middle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .modal-gift-img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #f5f9f6;
+      padding: 2px;
+    }
+
+    .modal-package-commission-amount {
+      font-size: 18px;
+      font-weight: 800;
+      color: #1a5c3a;
+      margin-bottom: 2px;
+    }
+
+    .modal-package-commission-amount::before {
+      content: '约';
+      font-size: 12px;
+      font-weight: 500;
+      margin-right: 1px;
+    }
+
+    .modal-package-commission-label {
+      font-size: 11px;
+      color: #8b9a90;
+    }
+
+    .modal-commission-label {
+      font-size: 10px;
+      color: #6b8a78;
+    }
+
+    /* ===== 底部合作区 ===== */
+    .footer {
+      background: linear-gradient(135deg, #0d3320 0%, #1a5c3a 100%);
+      color: #d4edda;
+      padding: 32px 40px;
+      text-align: center;
+    }
+
+    .footer-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #a8d5ba;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .footer-sub {
+      font-size: 12px;
+      color: #7cc09a;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+
+    .footer-tags {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-tag {
+      background: rgba(76, 175, 125, 0.15);
+      border: 1px solid rgba(76, 175, 125, 0.3);
+      color: #7cc09a;
+      padding: 5px 14px;
+      border-radius: 18px;
+      font-size: 11px;
+    }
+
+    .contact-hint {
+      margin-top: 16px;
+      font-size: 11px;
+      color: #5a9a78;
+      padding-top: 14px;
+      border-top: 1px solid rgba(76, 175, 125, 0.2);
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .advantage-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .mode-btn {
+        padding: 18px 30px;
+        font-size: 17px;
+        min-width: 210px;
+      }
+
+      .mode-btn .mode-sub {
+        font-size: 12px;
+      }
+
+      .header,
+      .hero-section,
+      .product-section,
+      .advantage-section,
+      .footer {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .brand-name {
+        font-size: 26px;
+        letter-spacing: 4px;
+      }
+
+      .hero-title {
+        font-size: 22px;
+      }
+    }
+
+    /* ===== 手机端精调（≤480px） ===== */
+    @media (max-width: 480px) {
+      .header {
+        padding: 26px 16px 24px;
+      }
+
+      .brand-name {
+        font-size: 21px;
+        letter-spacing: 2px;
+      }
+
+      .brand-sub {
+        font-size: 12px;
+        letter-spacing: 2px;
+      }
+
+      .brand-tagline {
+        font-size: 11px;
+        letter-spacing: 1px;
+      }
+
+      .hero-section {
+        padding: 20px 16px;
+      }
+
+      .hero-title {
+        font-size: 19px;
+        letter-spacing: 1px;
+      }
+
+      .hero-subtitle {
+        font-size: 12px;
+        margin-bottom: 14px;
+      }
+
+      .mode-btn {
+        padding: 16px 26px;
+        font-size: 16px;
+        min-width: 190px;
+      }
+
+      .mode-btn .mode-sub {
+        font-size: 11px;
+      }
+
+      .group-banner {
+        padding: 10px 14px;
+        margin: 24px 0 12px;
+      }
+
+      .group-banner .group-name {
+        font-size: 13px;
+      }
+
+      .group-banner .group-commission {
+        font-size: 10px;
+        padding: 4px 10px;
+      }
+
+      .advantage-grid {
+        gap: 10px;
+      }
+
+      .footer {
+        padding: 20px 16px;
+      }
+    }
+
+    /* ===== 触屏设备：取消粘滞 hover 态 ===== */
+    @media (hover: none) {
+      .product-card:hover {
+        transform: none !important;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .card-container {
+        box-shadow: none;
+      }
+
+      .product-card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="card-container">
+  <div class="card-container">
 
-  <!-- ===== 顶部品牌区 ===== -->
-  <header class="header">
-    <div class="brand-name">仅三生物</div>
-    <div class="brand-sub">玻麦妍 × GENEIII</div>
-    <div class="brand-tagline">麦角硫因赛道头部品牌 · 细胞级抗衰专家</div>
-  </header>
+    <!-- ===== 顶部品牌区 ===== -->
+    <header class="header">
+      <div class="brand-name">仅三生物</div>
+      <div class="brand-sub">玻麦妍 × GENEIII</div>
+      <div class="brand-tagline">麦角硫因赛道头部品牌 · 细胞级抗衰专家</div>
+    </header>
 
-  <!-- ===== 佣金展示区 ===== -->
-  <section class="hero-section">
-    <h1 class="hero-title">达人 / KOC 合作招募</h1>
-    <p class="hero-subtitle">纯佣金模式 · 高转化爆品 · 全链路支持</p>
-    <div class="mode-switch">
-      <button type="button" class="mode-btn active" data-mode="A" onclick="setCommissionMode('A')">
-        A类合作模式
-        <span class="mode-sub">口服护肤 30% · 个护 25%</span>
-      </button>
-      <button type="button" class="mode-btn" data-mode="B" onclick="setCommissionMode('B')">
-        B类合作模式
-        <span class="mode-sub">口服护肤 25% · 个护 20%</span>
-      </button>
-    </div>
-  </section>
+    <!-- ===== 佣金展示区 ===== -->
+    <section class="hero-section">
+      <h1 class="hero-title">达人 / KOC 合作招募</h1>
+      <p class="hero-subtitle">纯佣金模式 · 高转化爆品 · 全链路支持</p>
+      <div class="mode-switch">
+        <button type="button" class="mode-btn active" data-mode="A" onclick="setCommissionMode('A')">
+          A类合作模式
+          <span class="mode-sub">口服护肤 30% · 个护 25%</span>
+        </button>
+        <button type="button" class="mode-btn" data-mode="B" onclick="setCommissionMode('B')">
+          B类合作模式
+          <span class="mode-sub">口服护肤 25% · 个护 20%</span>
+        </button>
+      </div>
+    </section>
 
-  <!-- ===== 产品线区域 ===== -->
-  <section class="product-section">
-    <h2 class="section-title">全品类产品矩阵 · 套餐佣金明细</h2>
-    
-    <!-- 第一组：口服线 + 护肤线 -->
-    <div class="group-banner group-1">
-      <span class="group-name">口服线 + 护肤线</span>
-      <span class="group-commission">A类 30% · B类 25%</span>
-    </div>
+    <!-- ===== 产品线区域 ===== -->
+    <section class="product-section">
+      <h2 class="section-title">全品类产品矩阵 · 套餐佣金明细</h2>
 
-    <!-- 口服线 -->
-    <div class="category-title">GENEIII口服线</div>
-    <div class="product-grid">
+      <!-- 第一组：口服线 + 护肤线 -->
+      <div class="group-banner group-1">
+        <span class="group-name">口服线 + 护肤线</span>
+        <span class="group-commission">A类 30% · B类 25%</span>
+      </div>
 
-      <div class="product-card" onclick="openModal('capsule-30mg-60')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-capsule-30mg-60" src="Gene_img/image_006.webp" alt="30mg基础款60粒"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">GENEIII麦角硫因口服胶囊 30mg（60粒）</div>
-            <span class="product-tag">细胞级抗衰</span>
-            <ul class="product-selling-points">
-              <li>细胞线粒体级抗衰，2粒=1.5斤鲜灵芝</li>
-              <li>改善睡眠，益气养血，补气提神</li>
-            </ul>
+      <!-- 口服线 -->
+      <div class="category-title">GENEIII口服线</div>
+      <div class="product-grid">
+
+        <div class="product-card" onclick="openModal('capsule-30mg-60')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-capsule-30mg-60" src="Gene_img/image_006.webp"
+                alt="30mg基础款60粒"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">GENEIII麦角硫因口服胶囊 30mg（60粒）</div>
+              <span class="product-tag">细胞级抗衰</span>
+              <ul class="product-selling-points">
+                <li>细胞线粒体级抗衰，2粒=1.5斤鲜灵芝</li>
+                <li>改善睡眠，益气养血，补气提神</li>
+              </ul>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1瓶（60粒）</span><span class="package-price">带货价
+                  ¥529</span></div>
+              <div class="package-commission"><span class="commission-amount">¥158.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">2瓶</span><span class="package-price">带货价 ¥899</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥269.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">3瓶</span><span class="package-price">带货价 ¥1299</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥389.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
           </div>
         </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1瓶（60粒）</span><span class="package-price">带货价 ¥529</span></div>
-            <div class="package-commission"><span class="commission-amount">¥158.70</span><span class="commission-label">达人佣金</span></div>
+
+        <div class="product-card" onclick="openModal('capsule-30mg-90')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-capsule-30mg-90" src="Gene_img/image_005.webp"
+                alt="30mg基础款90粒"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">GENEIII麦角硫因口服胶囊 30mg（90粒）</div>
+              <span class="product-tag">大容量装</span>
+              <ul class="product-selling-points">
+                <li>90粒大容量，更高性价比</li>
+                <li>细胞线粒体级抗衰，2粒=1.5斤鲜灵芝</li>
+              </ul>
+            </div>
           </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">2瓶</span><span class="package-price">带货价 ¥899</span></div>
-            <div class="package-commission"><span class="commission-amount">¥269.70</span><span class="commission-label">达人佣金</span></div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1瓶（90粒）</span><span class="package-price">带货价
+                  ¥699</span></div>
+              <div class="package-commission"><span class="commission-amount">¥209.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">2瓶</span><span class="package-price">带货价 ¥1249</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥374.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">4瓶</span><span class="package-price">带货价 ¥2229</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥668.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item is-special">
+              <div class="package-info"><span class="package-spec">6瓶</span><span class="package-price">带货价 ¥3059</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥917.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
           </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">3瓶</span><span class="package-price">带货价 ¥1299</span></div>
-            <div class="package-commission"><span class="commission-amount">¥389.70</span><span class="commission-label">达人佣金</span></div>
+        </div>
+
+        <div class="product-card" onclick="openModal('capsule-50mg-60')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-capsule-50mg-60" src="Gene_img/image_004.webp"
+                alt="50mg加强款60粒"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">GENEIII麦角硫因口服胶囊 50mg（加强款）</div>
+              <span class="product-tag">高含量加强</span>
+              <ul class="product-selling-points">
+                <li>50mg高含量加强版，效果更强</li>
+                <li>皮肤嫩、呼呼香、精神头好</li>
+              </ul>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1瓶（60粒）</span><span class="package-price">带货价
+                  ¥899</span></div>
+              <div class="package-commission"><span class="commission-amount">¥269.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">2瓶</span><span class="package-price">带货价 ¥1249</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥374.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">3瓶</span><span class="package-price">带货价 ¥1999</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥599.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item is-special">
+              <div class="package-info"><span class="package-spec">6瓶</span><span class="package-price">带货价 ¥3399</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥1019.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="product-card" onclick="openModal('capsule-ovary')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-capsule-ovary" src="Gene_img/image_002.webp"
+                alt="卵巢款胶囊"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">GENEIII麦角硫因卵巢焕活胶囊</div>
+              <span class="product-tag">卵巢养护</span>
+              <ul class="product-selling-points">
+                <li>肌醇+VD3+VK2，巢轴-骨骼协同焕活</li>
+                <li>提升卵泡质量，调节内分泌</li>
+              </ul>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1瓶（60粒）</span><span class="package-price">带货价
+                  ¥769</span></div>
+              <div class="package-commission"><span class="commission-amount">¥230.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">3瓶</span><span class="package-price">带货价 ¥2129</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥638.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item is-special">
+              <div class="package-info"><span class="package-spec">6瓶</span><span class="package-price">带货价 ¥3939</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥1181.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" onclick="openModal('capsule-liver')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-capsule-liver" src="Gene_img/image_001.webp"
+                alt="护肝款胶囊"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">GENEIII麦角硫因护肝款胶囊</div>
+              <span class="product-tag">临床护肝</span>
+              <ul class="product-selling-points">
+                <li>奶蓟草+麦角硫因，内外源双重护肝</li>
+                <li>30天转氨酶降低19-21%，临床实证</li>
+              </ul>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1瓶（60粒）</span><span class="package-price">带货价
+                  ¥739</span></div>
+              <div class="package-commission"><span class="commission-amount">¥221.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">3瓶</span><span class="package-price">带货价 ¥2049</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥614.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item is-special">
+              <div class="package-info"><span class="package-spec">6瓶</span><span class="package-price">带货价 ¥3659</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥1097.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="product-card" onclick="openModal('capsule-30mg-90')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-capsule-30mg-90" src="Gene_img/image_005.webp" alt="30mg基础款90粒"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">GENEIII麦角硫因口服胶囊 30mg（90粒）</div>
-            <span class="product-tag">大容量装</span>
-            <ul class="product-selling-points">
-              <li>90粒大容量，更高性价比</li>
-              <li>细胞线粒体级抗衰，2粒=1.5斤鲜灵芝</li>
-            </ul>
+      <!-- 护肤线 -->
+      <div class="category-title">玻麦妍护肤线</div>
+      <div class="product-grid">
+
+        <div class="product-card" onclick="openModal('skincare_2000ppm')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-skincare_2000ppm" src="Gene_img/image_030.webp"
+                alt="2000PPM光耀塑颜次抛精华"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">2000ppm美白淡斑塑颜次抛精华</div>
+              <span class="product-tag">敏肌美白抗老</span>
+              <ul class="product-selling-points">
+                <li>美白抗老 嘭弹透亮</li>
+                <li>30+熟龄肌定制</li>
+              </ul>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1盒（30支）</span><span class="package-price">带货价
+                  ¥259</span></div>
+              <div class="package-commission"><span class="commission-amount">¥77.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">3盒（90支）</span><span class="package-price">带货价
+                  ¥599</span></div>
+              <div class="package-commission"><span class="commission-amount">¥179.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
           </div>
         </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1瓶（90粒）</span><span class="package-price">带货价 ¥699</span></div>
-            <div class="package-commission"><span class="commission-amount">¥209.70</span><span class="commission-label">达人佣金</span></div>
+
+
+        <div class="product-card" onclick="openModal('skincare_5000ppm')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-skincare_5000ppm" src="Gene_img/image_028.webp"
+                alt="5000PPM御龄奢养次抛精华"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">5000PPM御龄奢养次抛精华</div>
+              <span class="product-tag">抗老天花板</span>
+              <ul class="product-selling-points">
+                <li>抗衰天花板 淡纹紧致</li>
+                <li>35+熟龄肌奢养</li>
+              </ul>
+            </div>
           </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">2瓶</span><span class="package-price">带货价 ¥1249</span></div>
-            <div class="package-commission"><span class="commission-amount">¥374.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">4瓶</span><span class="package-price">带货价 ¥2229</span></div>
-            <div class="package-commission"><span class="commission-amount">¥668.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item is-special">
-            <div class="package-info"><span class="package-spec">6瓶</span><span class="package-price">带货价 ¥3059</span></div>
-            <div class="package-commission"><span class="commission-amount">¥917.70</span><span class="commission-label">达人佣金</span></div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1盒（30支）</span><span class="package-price">带货价
+                  ¥399</span></div>
+              <div class="package-commission"><span class="commission-amount">¥119.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">3盒（90支）</span><span class="package-price">带货价
+                  ¥999</span></div>
+              <div class="package-commission"><span class="commission-amount">¥299.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
           </div>
         </div>
+
+        <div class="product-card" onclick="openModal('skincare_5000ppm_white')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-skincare_5000ppm_white"
+                src="Gene_img/image_028.webp" alt="5000PPM美白特证次抛"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">5000PPM次抛精华【美白特证款】</div>
+              <span class="product-tag">持证美白抗老</span>
+              <ul class="product-selling-points">
+                <li>美白特证 抗老淡斑</li>
+                <li>5000PPM超高浓度</li>
+              </ul>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1盒（30支）</span><span class="package-price">带货价
+                  ¥459</span></div>
+              <div class="package-commission"><span class="commission-amount">¥137.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">3盒（90支）</span><span class="package-price">带货价
+                  ¥1069</span></div>
+              <div class="package-commission"><span class="commission-amount">¥320.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" onclick="openModal('skincare_whitening_water')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-skincare_whitening_water"
+                src="Gene_img/image_027.webp" alt="2000PPM美白淡斑塑颜水"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">2000+美白淡斑塑颜水</div>
+              <span class="product-tag">美白特证水</span>
+              <ul class="product-selling-points">
+                <li>美白特证 淡斑提亮</li>
+                <li>敏感肌可用</li>
+              </ul>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1瓶（200ml）</span><span class="package-price">带货价
+                  ¥269</span></div>
+              <div class="package-commission"><span class="commission-amount">¥80.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">3瓶（600ml）</span><span class="package-price">带货价
+                  ¥699</span></div>
+              <div class="package-commission"><span class="commission-amount">¥209.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="product-card" onclick="openModal('skincare_breath_cream_2000_white')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-skincare_breath_cream_2000_white"
+                src="Gene_img/image_025.webp" alt="2000+PPM呼吸面霜美白特证"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">2000PP美白淡斑塑颜轻盈霜</div>
+              <span class="product-tag">美白特证</span>
+              <ul class="product-selling-points">
+                <li>美白『特证+专利』双buff加持</li>
+                <li>首款含2000+PPM麦角硫因美白特证面霜</li>
+              </ul>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1瓶（50g）</span><span class="package-price">带货价
+                  ¥299</span></div>
+              <div class="package-commission"><span class="commission-amount">¥89.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">3瓶（150g）</span><span class="package-price">带货价
+                  ¥719</span></div>
+              <div class="package-commission"><span class="commission-amount">¥215.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="product-card" onclick="openModal('skincare_moist_cream_1000')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-skincare_moist_cream_1000"
+                src="Gene_img/image_015.webp" alt="1000+PPM滋润面霜"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">1000+PPM麦角硫因赋活煥颜滋润面霜</div>
+              <span class="product-tag">糖氧双抗</span>
+              <ul class="product-selling-points">
+                <li>糖氧双抗 滋润保湿</li>
+                <li>入门抗氧面霜</li>
+              </ul>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1瓶</span><span class="package-price">带货价 ¥199</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥59.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">3瓶</span><span class="package-price">带货价 ¥469</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥140.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="product-card" onclick="openModal('skincare_lifting_cream_1000')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-skincare_lifting_cream_1000"
+                src="Gene_img/image_014.webp" alt="1000+PPM赋活焕颜面霜"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">1000PPM麦角硫因赋活焕颜绷带霜</div>
+              <span class="product-tag">提拉紧致</span>
+              <ul class="product-selling-points">
+                <li>提拉紧致 绷带面霜</li>
+                <li>V脸轮廓</li>
+              </ul>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1瓶</span><span class="package-price">带货价 ¥199</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥59.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">3瓶</span><span class="package-price">带货价 ¥469</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥140.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="product-card" onclick="openModal('skincare_patch_mask_1000')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-skincare_patch_mask_1000"
+                src="Gene_img/image_011.webp" alt="1000+PPM贴片面膜"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">1000+PPM麦角硫因灵芝焕颜面膜</div>
+              <span class="product-tag">焕白提亮</span>
+              <ul class="product-selling-points">
+                <li>焕白提亮 温和修护</li>
+                <li>敏肌贴片面膜</li>
+              </ul>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">3盒</span><span class="package-price">带货价 ¥199</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥59.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">6盒</span><span class="package-price">带货价 ¥289</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥86.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item is-special">
+              <div class="package-info"><span class="package-spec">9盒</span><span class="package-price">带货价 ¥399</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥119.70</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="product-card" onclick="openModal('capsule-50mg-60')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-capsule-50mg-60" src="Gene_img/image_004.webp" alt="50mg加强款60粒"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">GENEIII麦角硫因口服胶囊 50mg（加强款）</div>
-            <span class="product-tag">高含量加强</span>
-            <ul class="product-selling-points">
-              <li>50mg高含量加强版，效果更强</li>
-              <li>皮肤嫩、呼呼香、精神头好</li>
-            </ul>
-          </div>
-        </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1瓶（60粒）</span><span class="package-price">带货价 ¥899</span></div>
-            <div class="package-commission"><span class="commission-amount">¥269.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">2瓶</span><span class="package-price">带货价 ¥1249</span></div>
-            <div class="package-commission"><span class="commission-amount">¥374.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">3瓶</span><span class="package-price">带货价 ¥1999</span></div>
-            <div class="package-commission"><span class="commission-amount">¥599.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item is-special">
-            <div class="package-info"><span class="package-spec">6瓶</span><span class="package-price">带货价 ¥3399</span></div>
-            <div class="package-commission"><span class="commission-amount">¥1019.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-        </div>
+      <!-- 第二组：个护健康线 -->
+      <div class="group-banner group-1">
+        <span class="group-name">个护健康线</span>
+        <span class="group-commission">A类 25% · B类 20%</span>
       </div>
 
+      <!-- 个护线 -->
+      <div class="category-title">个护健康线</div>
+      <div class="product-grid">
 
-      
-      <div class="product-card" onclick="openModal('capsule-ovary')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-capsule-ovary" src="Gene_img/image_002.webp" alt="卵巢款胶囊"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">GENEIII麦角硫因卵巢焕活胶囊</div>
-            <span class="product-tag">卵巢养护</span>
-            <ul class="product-selling-points">
-              <li>肌醇+VD3+VK2，巢轴-骨骼协同焕活</li>
-              <li>提升卵泡质量，调节内分泌</li>
-            </ul>
+        <div class="product-card" onclick="openModal('eyewash-portable')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-eyewash-portable" src="Gene_img/image_010.webp"
+                alt="洗眼液便携版"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">仅三麦角硫因洗眼液（便携版）</div>
+              <span class="product-tag">眼部抗氧</span>
+              <ul class="product-selling-points">
+                <li>眼部抗氧，告别"人老珠黄"</li>
+                <li>人体临床报告，官网可查</li>
+              </ul>
+            </div>
+          </div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1盒</span><span class="package-price">带货价 ¥119</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥29.75</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">2盒</span><span class="package-price">带货价 ¥198</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥49.50</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item is-special">
+              <div class="package-info"><span class="package-spec">3盒</span><span class="package-price">带货价 ¥299</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥74.75</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
           </div>
         </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1瓶（60粒）</span><span class="package-price">带货价 ¥769</span></div>
-            <div class="package-commission"><span class="commission-amount">¥230.70</span><span class="commission-label">达人佣金</span></div>
+
+        <div class="product-card" onclick="openModal('eyewash-pure')">
+          <div class="product-top">
+            <div class="product-image"><img loading="lazy" id="card-img-eyewash-pure" src="Gene_img/image_009.webp"
+                alt="洗眼液纯洗版"></div>
+            <div class="product-name-wrap">
+              <div class="product-name">仅三麦角硫因洗眼液（纯洗版）</div>
+              <span class="product-tag">大容量纯洗</span>
+              <ul class="product-selling-points">
+                <li>眼部抗氧，告别"人老珠黄"</li>
+                <li>大容量家庭装，日常护眼必备</li>
+              </ul>
+            </div>
           </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">3瓶</span><span class="package-price">带货价 ¥2129</span></div>
-            <div class="package-commission"><span class="commission-amount">¥638.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item is-special">
-            <div class="package-info"><span class="package-spec">6瓶</span><span class="package-price">带货价 ¥3939</span></div>
-            <div class="package-commission"><span class="commission-amount">¥1181.70</span><span class="commission-label">达人佣金</span></div>
+          <div class="package-list">
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">1盒</span><span class="package-price">带货价 ¥199</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥49.75</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">2盒</span><span class="package-price">带货价 ¥359</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥89.75</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
+            <div class="package-item">
+              <div class="package-info"><span class="package-spec">4盒</span><span class="package-price">带货价 ¥669</span>
+              </div>
+              <div class="package-commission"><span class="commission-amount">¥167.25</span><span
+                  class="commission-label">达人佣金</span></div>
+            </div>
           </div>
         </div>
+
+
+
       </div>
-
-      <div class="product-card" onclick="openModal('capsule-liver')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-capsule-liver" src="Gene_img/image_001.webp" alt="护肝款胶囊"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">GENEIII麦角硫因护肝款胶囊</div>
-            <span class="product-tag">临床护肝</span>
-            <ul class="product-selling-points">
-              <li>奶蓟草+麦角硫因，内外源双重护肝</li>
-              <li>30天转氨酶降低19-21%，临床实证</li>
-            </ul>
-          </div>
-        </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1瓶（60粒）</span><span class="package-price">带货价 ¥739</span></div>
-            <div class="package-commission"><span class="commission-amount">¥221.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">3瓶</span><span class="package-price">带货价 ¥2049</span></div>
-            <div class="package-commission"><span class="commission-amount">¥614.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item is-special">
-            <div class="package-info"><span class="package-spec">6瓶</span><span class="package-price">带货价 ¥3659</span></div>
-            <div class="package-commission"><span class="commission-amount">¥1097.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 护肤线 -->
-    <div class="category-title">玻麦妍护肤线</div>
-    <div class="product-grid">
-      
-      <div class="product-card" onclick="openModal('skincare_2000ppm')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-skincare_2000ppm" src="Gene_img/image_030.webp" alt="2000PPM光耀塑颜次抛精华"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">2000ppm美白淡斑塑颜次抛精华</div>
-            <span class="product-tag">敏肌美白抗老</span>
-            <ul class="product-selling-points">
-              <li>美白抗老 嘭弹透亮</li>
-              <li>30+熟龄肌定制</li>
-            </ul>
-          </div>
-        </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1盒（30支）</span><span class="package-price">带货价 ¥259</span></div>
-            <div class="package-commission"><span class="commission-amount">¥77.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">3盒（90支）</span><span class="package-price">带货价 ¥599</span></div>
-            <div class="package-commission"><span class="commission-amount">¥179.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-        </div>
-      </div>
-
-      
-      <div class="product-card" onclick="openModal('skincare_5000ppm')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-skincare_5000ppm" src="Gene_img/image_028.webp" alt="5000PPM御龄奢养次抛精华"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">玻麦妍5000PPM御龄奢养次抛精华</div>
-            <span class="product-tag">抗老天花板</span>
-            <ul class="product-selling-points">
-              <li>抗衰天花板 淡纹紧致</li>
-              <li>35+熟龄肌奢养</li>
-            </ul>
-          </div>
-        </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1盒（30支）</span><span class="package-price">带货价 ¥399</span></div>
-            <div class="package-commission"><span class="commission-amount">¥119.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">3盒（90支）</span><span class="package-price">带货价 ¥999</span></div>
-            <div class="package-commission"><span class="commission-amount">¥299.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" onclick="openModal('skincare_5000ppm_white')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-skincare_5000ppm_white" src="Gene_img/image_028.webp" alt="5000PPM美白特证次抛"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">玻麦妍5000PPM次抛精华【美白特证款】</div>
-            <span class="product-tag">持证美白抗老</span>
-            <ul class="product-selling-points">
-              <li>美白特证 抗老淡斑</li>
-              <li>5000PPM超高浓度</li>
-            </ul>
-          </div>
-        </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1盒（30支）</span><span class="package-price">带货价 ¥459</span></div>
-            <div class="package-commission"><span class="commission-amount">¥137.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">3盒（90支）</span><span class="package-price">带货价 ¥1069</span></div>
-            <div class="package-commission"><span class="commission-amount">¥320.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" onclick="openModal('skincare_whitening_water')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-skincare_whitening_water" src="Gene_img/image_027.webp" alt="2000PPM美白淡斑塑颜水"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">2000+美白淡斑塑颜水</div>
-            <span class="product-tag">美白特证水</span>
-            <ul class="product-selling-points">
-              <li>美白特证 淡斑提亮</li>
-              <li>敏感肌可用</li>
-            </ul>
-          </div>
-        </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1瓶（200ml）</span><span class="package-price">带货价 ¥269</span></div>
-            <div class="package-commission"><span class="commission-amount">¥80.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">3瓶（600ml）</span><span class="package-price">带货价 ¥699</span></div>
-            <div class="package-commission"><span class="commission-amount">¥209.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-        </div>
-      </div>
-
-      
-      <div class="product-card" onclick="openModal('skincare_breath_cream_2000_white')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-skincare_breath_cream_2000_white" src="Gene_img/image_025.webp" alt="2000+PPM呼吸面霜美白特证"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">2000PP美白淡斑塑颜轻盈霜</div>
-            <span class="product-tag">美白特证</span>
-            <ul class="product-selling-points">
-              <li>美白『特证+专利』双buff加持</li>
-              <li>首款含2000+PPM麦角硫因美白特证面霜</li>
-            </ul>
-          </div>
-        </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1瓶（50g）</span><span class="package-price">带货价 ¥299</span></div>
-            <div class="package-commission"><span class="commission-amount">¥89.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">3瓶（150g）</span><span class="package-price">带货价 ¥719</span></div>
-            <div class="package-commission"><span class="commission-amount">¥215.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-        </div>
-      </div>
-
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      <div class="product-card" onclick="openModal('skincare_lifting_cream_1000')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-skincare_lifting_cream_1000" src="Gene_img/image_015.webp" alt="1000+PPM赋活焕颜面霜"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">1000+PPM麦角硫因赋活煥颜滋润面霜</div>
-            <span class="product-tag">提拉紧致</span>
-            <ul class="product-selling-points">
-              <li>提拉紧致 绷带面霜</li>
-              <li>V脸轮廓</li>
-            </ul>
-          </div>
-        </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1瓶</span><span class="package-price">带货价 ¥199</span></div>
-            <div class="package-commission"><span class="commission-amount">¥59.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">3瓶</span><span class="package-price">带货价 ¥469</span></div>
-            <div class="package-commission"><span class="commission-amount">¥140.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-        </div>
-      </div>
-
-      
-      
-      <div class="product-card" onclick="openModal('skincare_patch_mask_1000')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-skincare_patch_mask_1000" src="Gene_img/image_011.webp" alt="1000+PPM贴片面膜"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">1000+PPM麦角硫因灵芝焕颜面膜</div>
-            <span class="product-tag">焕白提亮</span>
-            <ul class="product-selling-points">
-              <li>焕白提亮 温和修护</li>
-              <li>敏肌贴片面膜</li>
-            </ul>
-          </div>
-        </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">3盒</span><span class="package-price">带货价 ¥199</span></div>
-            <div class="package-commission"><span class="commission-amount">¥59.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">6盒</span><span class="package-price">带货价 ¥289</span></div>
-            <div class="package-commission"><span class="commission-amount">¥86.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item is-special">
-            <div class="package-info"><span class="package-spec">9盒</span><span class="package-price">带货价 ¥399</span></div>
-            <div class="package-commission"><span class="commission-amount">¥119.70</span><span class="commission-label">达人佣金</span></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 第二组：个护健康线 -->
-    <div class="group-banner group-1">
-      <span class="group-name">个护健康线</span>
-      <span class="group-commission">A类 25% · B类 20%</span>
-    </div>
-
-    <!-- 个护线 -->
-    <div class="category-title">个护健康线</div>
-    <div class="product-grid">
-      
-      <div class="product-card" onclick="openModal('eyewash-portable')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-eyewash-portable" src="Gene_img/image_010.webp" alt="洗眼液便携版"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">仅三麦角硫因洗眼液（便携版）</div>
-            <span class="product-tag">眼部抗氧</span>
-            <ul class="product-selling-points">
-              <li>眼部抗氧，告别"人老珠黄"</li>
-              <li>人体临床报告，官网可查</li>
-            </ul>
-          </div>
-        </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1盒</span><span class="package-price">带货价 ¥119</span></div>
-            <div class="package-commission"><span class="commission-amount">¥29.75</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">2盒</span><span class="package-price">带货价 ¥198</span></div>
-            <div class="package-commission"><span class="commission-amount">¥49.50</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item is-special">
-            <div class="package-info"><span class="package-spec">3盒</span><span class="package-price">带货价 ¥299</span></div>
-            <div class="package-commission"><span class="commission-amount">¥74.75</span><span class="commission-label">达人佣金</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" onclick="openModal('eyewash-pure')">
-        <div class="product-top">
-          <div class="product-image"><img loading="lazy" id="card-img-eyewash-pure" src="Gene_img/image_009.webp" alt="洗眼液纯洗版"></div>
-          <div class="product-name-wrap">
-            <div class="product-name">仅三麦角硫因洗眼液（纯洗版）</div>
-            <span class="product-tag">大容量纯洗</span>
-            <ul class="product-selling-points">
-              <li>眼部抗氧，告别"人老珠黄"</li>
-              <li>大容量家庭装，日常护眼必备</li>
-            </ul>
-          </div>
-        </div>
-        <div class="package-list">
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">1盒</span><span class="package-price">带货价 ¥199</span></div>
-            <div class="package-commission"><span class="commission-amount">¥49.75</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">2盒</span><span class="package-price">带货价 ¥359</span></div>
-            <div class="package-commission"><span class="commission-amount">¥89.75</span><span class="commission-label">达人佣金</span></div>
-          </div>
-          <div class="package-item">
-            <div class="package-info"><span class="package-spec">4盒</span><span class="package-price">带货价 ¥669</span></div>
-            <div class="package-commission"><span class="commission-amount">¥167.25</span><span class="commission-label">达人佣金</span></div>
-          </div>
-        </div>
-      </div>
-
-      
-      
-    </div>
 
     </section>
 
-  <!-- ===== 品牌优势区 ===== -->
+    <!-- ===== 品牌优势区 ===== -->
 
-  <!-- ===== 产品详情弹窗 ===== -->
-  <div class="modal-overlay" id="productModal" onclick="closeModal(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal()">
-        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-      <div class="modal-header">
-        <div class="modal-product-image" id="modalImage">
-            <img loading="lazy" id="modal-img-skincare_2000ppm" src="Gene_img/image_030.webp" alt="" style="display:none">
-            <img loading="lazy" id="modal-img-skincare_5000ppm" src="Gene_img/image_028.webp" alt="" style="display:none">
-            <img loading="lazy" id="modal-img-skincare_5000ppm_white" src="Gene_img/image_028.webp" alt="" style="display:none">
-            <img loading="lazy" id="modal-img-skincare_whitening_water" src="Gene_img/image_027.webp" alt="" style="display:none">
-            <img loading="lazy" id="modal-img-skincare_breath_cream_2000_white" src="Gene_img/image_025.webp" alt="" style="display:none">
-            <img loading="lazy" id="modal-img-skincare_lifting_cream_1000" src="Gene_img/image_015.webp" alt="" style="display:none">
-            <img loading="lazy" id="modal-img-skincare_patch_mask_1000" src="Gene_img/image_011.webp" alt="" style="display:none">
+    <!-- ===== 产品详情弹窗 ===== -->
+    <div class="modal-overlay" id="productModal" onclick="closeModal(event)">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">
+          <svg viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <div class="modal-header">
+          <div class="modal-product-image" id="modalImage">
+            <img loading="lazy" id="modal-img-skincare_2000ppm" src="Gene_img/image_030.webp" alt=""
+              style="display:none">
+            <img loading="lazy" id="modal-img-skincare_5000ppm" src="Gene_img/image_028.webp" alt=""
+              style="display:none">
+            <img loading="lazy" id="modal-img-skincare_5000ppm_white" src="Gene_img/image_028.webp" alt=""
+              style="display:none">
+            <img loading="lazy" id="modal-img-skincare_whitening_water" src="Gene_img/image_027.webp" alt=""
+              style="display:none">
+            <img loading="lazy" id="modal-img-skincare_breath_cream_2000_white" src="Gene_img/image_025.webp" alt=""
+              style="display:none">
+            <img loading="lazy" id="modal-img-skincare_moist_cream_1000" src="Gene_img/image_015.webp" alt=""
+              style="display:none">
+            <img loading="lazy" id="modal-img-skincare_lifting_cream_1000" src="Gene_img/image_014.webp" alt=""
+              style="display:none">
+            <img loading="lazy" id="modal-img-skincare_patch_mask_1000" src="Gene_img/image_011.webp" alt=""
+              style="display:none">
 
-<img loading="lazy" id="modal-img-eyewash-portable" src="Gene_img/image_010.webp" alt="" style="display:none">
+            <img loading="lazy" id="modal-img-eyewash-portable" src="Gene_img/image_010.webp" alt=""
+              style="display:none">
             <img loading="lazy" id="modal-img-eyewash-pure" src="Gene_img/image_009.webp" alt="" style="display:none">
-            <img loading="lazy" id="modal-img-capsule-30mg-60" src="Gene_img/image_006.webp" alt="" style="display:none">
-            <img loading="lazy" id="modal-img-capsule-30mg-90" src="Gene_img/image_005.webp" alt="" style="display:none">
-            <img loading="lazy" id="modal-img-capsule-50mg-60" src="Gene_img/image_004.webp" alt="" style="display:none">
+            <img loading="lazy" id="modal-img-capsule-30mg-60" src="Gene_img/image_006.webp" alt=""
+              style="display:none">
+            <img loading="lazy" id="modal-img-capsule-30mg-90" src="Gene_img/image_005.webp" alt=""
+              style="display:none">
+            <img loading="lazy" id="modal-img-capsule-50mg-60" src="Gene_img/image_004.webp" alt=""
+              style="display:none">
             <img loading="lazy" id="modal-img-capsule-ovary" src="Gene_img/image_002.webp" alt="" style="display:none">
             <img loading="lazy" id="modal-img-capsule-liver" src="Gene_img/image_001.webp" alt="" style="display:none">
+          </div>
+          <div class="modal-product-info">
+            <h3 id="modalName"></h3>
+            <span class="modal-product-tag" id="modalTag"></span>
+            <div class="modal-product-desc" id="modalDesc"></div>
+          </div>
         </div>
-        <div class="modal-product-info">
-          <h3 id="modalName"></h3>
-          <span class="modal-product-tag" id="modalTag"></span>
-          <div class="modal-product-desc" id="modalDesc"></div>
-        </div>
-      </div>
-      <div class="modal-body">
-        <div class="modal-section">
-          <div class="modal-section-title">核心卖点</div>
-          <ul class="modal-selling-points" id="modalPoints"></ul>
-        </div>
-        <div class="modal-section">
-          <div class="modal-section-title">产品规格</div>
-          <div class="modal-specs" id="modalSpecs"></div>
-        </div>
-        <div class="modal-section">
-          <div class="modal-section-title" id="modalSectionTitle">套餐与佣金（30%）</div>
-          <div class="modal-packages" id="modalPackages"></div>
+        <div class="modal-body">
+          <div class="modal-section">
+            <div class="modal-section-title">核心卖点</div>
+            <ul class="modal-selling-points" id="modalPoints"></ul>
+          </div>
+          <div class="modal-section">
+            <div class="modal-section-title">产品规格</div>
+            <div class="modal-specs" id="modalSpecs"></div>
+          </div>
+          <div class="modal-section">
+            <div class="modal-section-title" id="modalSectionTitle">套餐与佣金（30%）</div>
+            <div class="modal-packages" id="modalPackages"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-</div>
+  </div>
 
 
 </body>
 <!-- ===== 品牌优势区 ===== -->
-  <section class="advantage-section">
-    <div class="advantage-grid">
-      <div class="advantage-item">
-        <div class="advantage-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <div class="advantage-text">三甲医院<br>临床认证</div>
-      </div>
-      <div class="advantage-item">
-        <div class="advantage-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="advantage-text">头部达人<br>带货验证</div>
-      </div>
+<section class="advantage-section">
+  <div class="advantage-grid">
+    <div class="advantage-item">
+      <div class="advantage-icon"><svg viewBox="0 0 24 24">
+          <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2z" />
+          <path d="M9 12l2 2 4-4" />
+        </svg></div>
+      <div class="advantage-text">三甲医院<br>临床认证</div>
     </div>
-  </section>
+    <div class="advantage-item">
+      <div class="advantage-icon"><svg viewBox="0 0 24 24">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 00-3-3.87" />
+          <path d="M16 3.13a4 4 0 010 7.75" />
+        </svg></div>
+      <div class="advantage-text">头部达人<br>带货验证</div>
+    </div>
+  </div>
+</section>
 
-  <!-- ===== 底部合作区 ===== -->
-  <footer class="footer">
-    <div class="footer-title">欢迎达人 / KOC 洽谈合作</div>
-    <div class="footer-sub">麦角硫因赛道红利期 · 携手共创高GMV</div>
-    <div class="contact-hint">请联系品牌商务负责人获取详细合作方案及产品样品</div>
-  </footer>
+<!-- ===== 底部合作区 ===== -->
+<footer class="footer">
+  <div class="footer-title">欢迎达人 / KOC 洽谈合作</div>
+  <div class="footer-sub">麦角硫因赛道红利期 · 携手共创高GMV</div>
+  <div class="contact-hint">请联系品牌商务负责人获取详细合作方案及产品样品</div>
+</footer>
 
 
 </div>
 
 <script>
-// 产品详细数据
-const productData = {
-  'skincare_2000ppm': {
-    name: '2000ppm美白淡斑塑颜次抛精华',
-    tag: '敏肌美白抗老',
-    desc: '敏肌美白抗老，麦角硫因细胞级抗氧',
-    image: 'assets/product_skincare_2000ppm.png',
-    points: [
-      '为30+熟龄肌量肤定制，从容修护抗老',
-      '淡化细纹，让肌肤弹润透亮；第三方检测使用14天皮肤光泽度提升+83.95%',
-      '2000PPM高浓度麦角硫因，美白抗老双效合一',
-      '敏感肌可用，温和有效'
-    ],
-    specs: [
-      {label: '核心成分', value: '2000PPM麦角硫因'},
-      {label: '规格', value: '30支/盒'},
-      {label: '适用', value: '30+熟龄肌'},
-      {label: '功效', value: '美白·抗老·嘭弹'}
-    ],
-    packages: [
-      {spec: '1盒（30支）', price: '¥259', commission: '¥77.70', gift: '赠同款5支装*1'},
-      {spec: '3盒（90支）', price: '¥599', commission: '¥179.70', gift: '赠同款5支装*5'}
-    ]
-  },
-  'skincare_5000ppm': {
-    name: '玻麦妍5000PPM御龄奢养次抛精华',
-    tag: '抗老天花板',
-    desc: '抗老天花板，麦角硫因细胞级抗氧',
-    image: 'assets/product_skincare_5000ppm.png',
-    points: [
-      '5000PPM超高浓度麦角硫因，抗衰天花板',
-      '35+熟龄肌奢养，强效淡纹紧致',
-      '细胞线粒体级抗老，从根源延缓衰老',
-      '高纯度99.99%，温和不刺激'
-    ],
-    specs: [
-      {label: '核心成分', value: '5000PPM麦角硫因'},
-      {label: '规格', value: '30支/盒'},
-      {label: '适用', value: '35+熟龄肌'},
-      {label: '功效', value: '抗衰·淡纹·紧致'}
-    ],
-    packages: [
-      {spec: '1盒（30支）', price: '¥399', commission: '¥119.70', gift: '赠同款小样5支装*1'},
-      {spec: '3盒（90支）', price: '¥999', commission: '¥299.70', gift: '赠同款5支*2'}
-    ]
-  },
-  'skincare_5000ppm_white': {
-    name: '玻麦妍5000PPM次抛精华【美白特证款】',
-    tag: '持证美白抗老',
-    desc: '美白特证款，5000PPM麦角硫因',
-    image: 'assets/product_skincare_5000ppm.png',
-    points: [
-      '美白特证产品，持证美白淡斑',
-      '5000PPM超高浓度麦角硫因，抗老美白双效',
-      '淡化色斑，提亮肤色，紧致抗皱',
-      '高纯度99.99%，温和有效'
-    ],
-    specs: [
-      {label: '核心成分', value: '5000PPM麦角硫因'},
-      {label: '规格', value: '30支/盒'},
-      {label: '适用', value: '熟龄肌'},
-      {label: '功效', value: '美白·抗老·淡斑'}
-    ],
-    packages: [
-      {spec: '1盒（30支）', price: '¥459', commission: '¥137.70', gift: '赠同款5支装*1'},
-      {spec: '3盒（90支）', price: '¥1069', commission: '¥320.70', gift: '赠同款5支装*3'}
-    ]
-  },
-  'skincare_whitening_water': {
-    name: '2000+美白淡斑塑颜水',
-    tag: '美白特证水',
-    desc: '美白特证水，麦角硫因细胞级抗氧',
-    image: 'assets/product_skincare_whitening_water.png',
-    points: [
-      '美白特证产品，持证美白淡斑',
-      '2000PPM麦角硫因，抑制黑色素生成',
-      '提亮肤色，改善暗沉黄气',
-      '敏感肌可用，温和美白不刺激'
-    ],
-    specs: [
-      {label: '核心成分', value: '2000PPM麦角硫因'},
-      {label: '规格', value: '200ml/瓶'},
-      {label: '适用', value: '所有肤质'},
-      {label: '功效', value: '美白·淡斑·提亮'}
-    ],
-    packages: [
-      {spec: '1瓶（200ml）', price: '¥269', commission: '¥80.70', gift: '赠同款30ml*1+湿敷棉（50片）'},
-      {spec: '3瓶（600ml）', price: '¥699', commission: '¥209.70', gift: '赠同款30ml*4+湿敷棉*3(150片)'}
-    ]
-  },
-'skincare_breath_cream_2000_white': {
-    name: '2000PP美白淡斑塑颜轻盈霜',
-    tag: '美白特证',
-    desc: '美白特证+专利双buff，2000+PPM麦角硫因',
-    image: 'assets/product_skincare_breath_cream_2000_white.png',
-    points: [
-      '美白『特证+专利』双buff加持，官网可查',
-      '首款含2000+PPM麦角硫因的美白特证面霜',
-      '内外源抗氧化，去黄提亮',
-      '4D玻尿酸保湿锁水，清爽不油腻'
-    ],
-    specs: [
-      {label: '核心成分', value: '2000+PPM麦角硫因'},
-      {label: '规格', value: '50g/瓶'},
-      {label: '适用', value: '所有肤质'},
-      {label: '功效', value: '美白·去黄·抗氧'}
-    ],
-    packages: [
-      {spec: '1瓶（50g）', price: '¥299', commission: '¥89.70', gift: '赠同款面霜5g'},
-      {spec: '3瓶（150g）', price: '¥719', commission: '¥215.70', gift: '赠同款面霜5g*3'}
-    ]
-  },
+  // 产品详细数据
+  const productData = {
+    'skincare_2000ppm': {
+      name: '2000ppm美白淡斑塑颜次抛精华',
+      tag: '敏肌美白抗老',
+      desc: '敏肌美白抗老，麦角硫因细胞级抗氧',
+      image: 'assets/product_skincare_2000ppm.png',
+      points: [
+        '为30+熟龄肌量肤定制，从容修护抗老',
+        '淡化细纹，让肌肤弹润透亮；第三方检测使用14天皮肤光泽度提升+83.95%',
+        '2000PPM高浓度麦角硫因，美白抗老双效合一',
+        '敏感肌可用，温和有效'
+      ],
+      specs: [
+        {label: '核心成分', value: '2000PPM麦角硫因'},
+        {label: '规格', value: '30支/盒'},
+        {label: '适用', value: '30+熟龄肌'},
+        {label: '功效', value: '美白·抗老·嘭弹'}
+      ],
+      packages: [
+        {spec: '1盒（30支）', price: '¥259', commission: '¥77.70', gift: '赠同款5支装*1'},
+        {spec: '3盒（90支）', price: '¥599', commission: '¥179.70', gift: '赠同款5支装*5'}
+      ]
+    },
+    'skincare_5000ppm': {
+      name: '5000PPM御龄奢养次抛精华',
+      tag: '抗老天花板',
+      desc: '抗老天花板，麦角硫因细胞级抗氧',
+      image: 'assets/product_skincare_5000ppm.png',
+      points: [
+        '5000PPM超高浓度麦角硫因，抗衰天花板',
+        '35+熟龄肌奢养，强效淡纹紧致',
+        '细胞线粒体级抗老，从根源延缓衰老',
+        '高纯度99.99%，温和不刺激'
+      ],
+      specs: [
+        {label: '核心成分', value: '5000PPM麦角硫因'},
+        {label: '规格', value: '30支/盒'},
+        {label: '适用', value: '35+熟龄肌'},
+        {label: '功效', value: '抗衰·淡纹·紧致'}
+      ],
+      packages: [
+        {spec: '1盒（30支）', price: '¥399', commission: '¥119.70', gift: '赠同款小样5支装*1'},
+        {spec: '3盒（90支）', price: '¥999', commission: '¥299.70', gift: '赠同款5支*2'}
+      ]
+    },
+    'skincare_5000ppm_white': {
+      name: '5000PPM次抛精华【美白特证款】',
+      tag: '持证美白抗老',
+      desc: '美白特证款，5000PPM麦角硫因',
+      image: 'assets/product_skincare_5000ppm.png',
+      points: [
+        '美白特证产品，持证美白淡斑',
+        '5000PPM超高浓度麦角硫因，抗老美白双效',
+        '淡化色斑，提亮肤色，紧致抗皱',
+        '高纯度99.99%，温和有效'
+      ],
+      specs: [
+        {label: '核心成分', value: '5000PPM麦角硫因'},
+        {label: '规格', value: '30支/盒'},
+        {label: '适用', value: '熟龄肌'},
+        {label: '功效', value: '美白·抗老·淡斑'}
+      ],
+      packages: [
+        {spec: '1盒（30支）', price: '¥459', commission: '¥137.70', gift: '赠同款5支装*1'},
+        {spec: '3盒（90支）', price: '¥1069', commission: '¥320.70', gift: '赠同款5支装*3'}
+      ]
+    },
+    'skincare_whitening_water': {
+      name: '2000+美白淡斑塑颜水',
+      tag: '美白特证水',
+      desc: '美白特证水，麦角硫因细胞级抗氧',
+      image: 'assets/product_skincare_whitening_water.png',
+      points: [
+        '美白特证产品，持证美白淡斑',
+        '2000PPM麦角硫因，抑制黑色素生成',
+        '提亮肤色，改善暗沉黄气',
+        '敏感肌可用，温和美白不刺激'
+      ],
+      specs: [
+        {label: '核心成分', value: '2000PPM麦角硫因'},
+        {label: '规格', value: '200ml/瓶'},
+        {label: '适用', value: '所有肤质'},
+        {label: '功效', value: '美白·淡斑·提亮'}
+      ],
+      packages: [
+        {spec: '1瓶（200ml）', price: '¥269', commission: '¥80.70', gift: '赠同款30ml*1+湿敷棉（50片）'},
+        {spec: '3瓶（600ml）', price: '¥699', commission: '¥209.70', gift: '赠同款30ml*4+湿敷棉*3(150片)'}
+      ]
+    },
+    'skincare_breath_cream_2000_white': {
+      name: '2000PP美白淡斑塑颜轻盈霜',
+      tag: '美白特证',
+      desc: '美白特证+专利双buff，2000+PPM麦角硫因',
+      image: 'assets/product_skincare_breath_cream_2000_white.png',
+      points: [
+        '美白『特证+专利』双buff加持，官网可查',
+        '首款含2000+PPM麦角硫因的美白特证面霜',
+        '内外源抗氧化，去黄提亮',
+        '4D玻尿酸保湿锁水，清爽不油腻'
+      ],
+      specs: [
+        {label: '核心成分', value: '2000+PPM麦角硫因'},
+        {label: '规格', value: '50g/瓶'},
+        {label: '适用', value: '所有肤质'},
+        {label: '功效', value: '美白·去黄·抗氧'}
+      ],
+      packages: [
+        {spec: '1瓶（50g）', price: '¥299', commission: '¥89.70', gift: '赠同款面霜5g'},
+        {spec: '3瓶（150g）', price: '¥719', commission: '¥215.70', gift: '赠同款面霜5g*3'}
+      ]
+    },
 
-  'skincare_lifting_cream_1000': {
-    name: '1000+PPM麦角硫因赋活煥颜滋润面霜',
-    tag: '提拉紧致',
-    desc: '提拉紧致，麦角硫因细胞级抗氧',
-    image: 'assets/product_skincare_lifting_cream_1000.png',
-    points: [
-      '足量添加麦角硫因，国际大牌同款贵价抗氧核心成分',
-      '1000+PPM浓度，唯一通路清晰可进入细胞线粒体的抗氧化成分',
-      '强效抗氧去黄提亮，提拉紧致',
-      '绷带面霜，塑造V脸轮廓'
-    ],
-    specs: [
-      {label: '核心成分', value: '1000+PPM麦角硫因'},
-      {label: '规格', value: '面霜'},
-      {label: '适用', value: '所有肤质'},
-      {label: '功效', value: '提拉·紧致·绷带'}
-    ],
-    packages: [
-      {spec: '1瓶', price: '¥199', commission: '¥59.70', gift: '赠同款小样*1'},
-      {spec: '3瓶', price: '¥469', commission: '¥140.70', gift: '赠同款小样*3'}
-    ]
-  },
-  'skincare_patch_mask_1000': {
-    name: '1000+PPM麦角硫因灵芝焕颜面膜',
-    tag: '焕白提亮',
-    desc: '焕白提亮，麦角硫因细胞级抗氧',
-    image: 'assets/product_skincare_patch_mask_1000.png',
-    points: [
-      '1000+PPM麦角硫因，高能抗氧化焕白提亮',
-      '麦角硫因被称为抗氧化届的爱马仕，雅诗兰黛、雅顿等国际大牌当家抗老成分',
-      '温和修护，敏感肌必备',
-      '贴片面膜，方便使用'
-    ],
-    specs: [
-      {label: '核心成分', value: '1000+PPM麦角硫因'},
-      {label: '规格', value: '贴片面膜'},
-      {label: '适用', value: '敏肌'},
-      {label: '功效', value: '焕白·抗氧·修护'}
-    ],
-    packages: [
-      {spec: '3盒', price: '¥199', commission: '¥59.70', gift: '赠同款贴片面膜3片'},
-      {spec: '6盒', price: '¥289', commission: '¥86.70', gift: '赠同款贴片面膜3片'},
-      {spec: '9盒', price: '¥399', commission: '¥119.70', special: true, gift: '赠同款贴片面5片'}
-    ]
-  },
-  'eyewash-portable': {
-    name: '仅三麦角硫因洗眼液（便携版）',
-    tag: '眼部抗氧',
-    desc: '眼部抗氧，告别"人老珠黄"，人体临床报告官网可查',
-    image: 'assets/product_eyewash_portable.png',
-    points: ['眼部抗氧，告别"人老珠黄"，人体临床报告官网可查', '行业首获临床试验备案（ChiCTR2400090987）', '抖音豆豆babe 1小时热卖27w，第十届金梧奖年度推荐单品', '麦角硫因直达眼部细胞，清除自由基', '便携独立包装，干净卫生，随身可用'],
-    specs: [
-      {label: '核心成分', value: '麦角硫因'},
-      {label: '规格', value: '0.5mL*20支+5ml*6支+洗眼杯*1'},
-      {label: '适用', value: '日常眼部护理'},
-      {label: '功效', value: '眼部抗氧·舒缓'}
-    ],
-    packages: [
-      {spec: '1盒', price: '¥119', commission: '¥29.75', gift: '赠便携装0.5ml*5支*1盒'},
-      {spec: '2盒', price: '¥198', commission: '¥49.50', gift: '赠便携装0.5ml*5支*2盒'},
-      {spec: '3盒', price: '¥299', commission: '¥74.75', special: true, gift: '赠便携装0.5ml*5支*5盒'}
-    ]
-  },
-  'eyewash-pure': {
-    name: '仅三麦角硫因洗眼液（纯洗版）',
-    tag: '大容量纯洗',
-    desc: '眼部抗氧，大容量家庭装，日常护眼必备',
-    image: 'assets/product_eyewash_pure.png',
-    points: ['眼部抗氧，告别"人老珠黄"，人体临床报告官网可查', '行业首获临床试验备案（ChiCTR2400090987）', '大容量家庭装，高性价比，日常护眼必备', '深层清洁眼部，缓解眼疲劳，明亮双眼', '麦角硫因抗氧化修护，温和不刺激'],
-    specs: [
-      {label: '核心成分', value: '麦角硫因'},
-      {label: '规格', value: '5ml*24/盒'},
-      {label: '适用', value: '家庭日常护眼'},
-      {label: '功效', value: '清洁·抗氧·舒缓'}
-    ],
-    packages: [
-      {spec: '1盒', price: '¥199', commission: '¥49.75', gift: '赠便携装0.5ml*5支*1盒'},
-      {spec: '2盒', price: '¥359', commission: '¥89.75', gift: '赠便携装0.5ml*5支*2盒'},
-      {spec: '4盒', price: '¥669', commission: '¥167.25', gift: '赠便携装0.5ml*5支*4盒'}
-    ]
-  },
-  'capsule-30mg-60': {
-    name: 'GENEIII麦角硫因口服胶囊 30mg（60粒）',
-    tag: '细胞级抗衰',
-    desc: '细胞线粒体级抗衰，2粒=1.5斤鲜灵芝，改善睡眠益气养血',
-    image: 'assets/product_capsule_basic.png',
-    points: [
-      '细胞线粒体级抗衰，2粒=1.5斤鲜灵芝（每斤鲜灵芝仅含40mg麦角硫因）',
-      '唯一可进入细胞线粒体清除自由基的抗氧化成分，搭载OCTN1转运蛋白',
-      '清除自由基能力是VE的60000倍、辅酶Q10的20倍、虾青素的6倍',
-      '酪氨酸酶抑制率87.62%，源头阻断黑色素形成',
-      '改善睡眠，益气养血，补气提神，皮肤嫩精神好',
-      '国内唯一三甲医院临床试验备案（ChiCTR2400093739），人民日报发布',
-      'FDA GRAS认证，纯度99.99%，新加坡国立大学Barry Halliwell教授合作'
-    ],
-    specs: [
-      {label: '核心成分', value: '30mg麦角硫因/粒'},
-      {label: '规格', value: '60粒/瓶'},
-      {label: '服用', value: '每日2粒'},
-      {label: '功效', value: '抗衰·助眠·养血'}
-    ],
-    packages: [
-      {spec: '1瓶（60粒）', price: '¥529', commission: '¥158.70', gift: '赠同款14粒*1袋'},
-      {spec: '2瓶', price: '¥899', commission: '¥269.70', gift: '赠同款14粒*1袋'},
-      {spec: '3瓶', price: '¥1299', commission: '¥389.70', gift: '赠同款14粒*2袋'}
-    ]
-  },
-  'capsule-30mg-90': {
-    image: 'assets/product_capsule_90mg.png',
-    name: 'GENEIII麦角硫因口服胶囊 30mg（90粒）',
-    tag: '大容量装',
-    desc: '90粒大容量更高性价比，细胞线粒体级抗衰',
-    points: [
-      '90粒大容量装，单粒成本更低，性价比更高',
-      '细胞线粒体级抗衰，2粒=1.5斤鲜灵芝',
-      '唯一可进入细胞线粒体清除自由基，搭载OCTN1转运蛋白',
-      '抗氧化力是VE的60000倍、辅酶Q10的20倍',
-      '改善睡眠，益气养血，补气提神',
-      '三甲医院临床试验备案，FDA GRAS认证，纯度99.99%'
-    ],
-    specs: [
-      {label: '核心成分', value: '30mg麦角硫因/粒'},
-      {label: '规格', value: '90粒/瓶'},
-      {label: '服用', value: '每日2粒'},
-      {label: '功效', value: '抗衰·助眠·养血'}
-    ],
-    packages: [
-      {spec: '1瓶（90粒）', price: '¥699', commission: '¥209.70'},
-      {spec: '2瓶', price: '¥1249', commission: '¥374.70', gift: '赠同款14粒*2袋'},
-      {spec: '4瓶', price: '¥2229', commission: '¥668.70', gift: '赠同款14粒*4袋'},
-      {spec: '6瓶', price: '¥3059', commission: '¥917.70', special: true, gift: '赠同款14粒*7袋'}
-    ]
-  },
-  'capsule-50mg-60': {
-    name: 'GENEIII麦角硫因口服胶囊 50mg（加强款）',
-    tag: '高含量加强',
-    desc: '50mg高含量加强版，细胞线粒体级抗衰，效果更强',
-    image: 'assets/product_capsule_strong.png',
-    points: [
-      '50mg高含量加强版，细胞线粒体级抗衰（基础款为30mg/粒）',
-      '唯一可进入细胞线粒体清除自由基，搭载OCTN1转运蛋白',
-      '抗氧化力是谷胱甘肽2倍、虾青素6倍、VE的60000倍',
-      '皮肤嫩、呼呼香、精神头好，强效抗衰',
-      '人体临床护肝报告官网可查，三甲医院临床实证',
-      'FDA GRAS认证，纯度99.99%，安全可长期服用'
-    ],
-    specs: [
-      {label: '核心成分', value: '50mg麦角硫因/粒'},
-      {label: '规格', value: '60粒/瓶'},
-      {label: '服用', value: '每日2粒'},
-      {label: '功效', value: '强效抗衰·助眠·护肝'}
-    ],
-    packages: [
-      {spec: '1瓶（60粒）', price: '¥899', commission: '¥269.70', gift: '赠同款14粒*1袋'},
-      {spec: '2瓶', price: '¥1249', commission: '¥374.70'},
-      {spec: '3瓶', price: '¥1999', commission: '¥599.70', gift: '赠同款14粒*4袋'},
-      {spec: '6瓶', price: '¥3399', commission: '¥1019.70', special: true, gift: '赠同款14粒*6袋'}
-    ]
-  },
-  'capsule-ovary': {
-    name: 'GENEIII麦角硫因卵巢焕活胶囊',
-    tag: '卵巢养护',
-    desc: '肌醇+VD3+VK2，巢轴-骨骼协同焕活，提升卵泡质量',
-    image: 'assets/product_capsule_ovary.png',
-    points: [
-      '肌醇+VD3+VK2黄金配比，巢轴-骨骼协同焕活',
-      '麦角硫因直达细胞线粒体，为卵巢细胞提供能量',
-      '提升卵泡质量，调节内分泌，改善月经周期',
-      '人体临床实证卵巢焕活效果，三甲医院临床备案',
-      'VD3+VK2协同促进钙吸收，保护骨骼健康',
-      '改善卵巢早衰，延缓更年期，由内而外养出好气色',
-      'FDA GRAS认证，纯度99.99%，安全可长期服用'
-    ],
-    specs: [
-      {label: '核心成分', value: '麦角硫因+肌醇+VD3+VK2'},
-      {label: '规格', value: '60粒/瓶'},
-      {label: '服用', value: '每日2粒'},
-      {label: '功效', value: '卵巢养护·内分泌调节'}
-    ],
-    packages: [
-      {spec: '1瓶（60粒）', price: '¥769', commission: '¥230.70'},
-      {spec: '3瓶', price: '¥2129', commission: '¥638.70', gift: '赠同款小样*1+基础款14粒30mg*1袋'},
-      {spec: '6瓶', price: '¥3939', commission: '¥1181.70', special: true, gift: '赠同款小样*3+基础款14粒30mg*1袋'}
-    ]
-  },
-  'capsule-liver': {
-    name: 'GENEIII麦角硫因护肝款胶囊',
-    tag: '临床护肝',
-    desc: '奶蓟草+麦角硫因，内外源双重护肝，30天转氨酶降低19-21%',
-    image: 'assets/product_capsule_liver.png',
-    points: [
-      '奶蓟草+麦角硫因，内外源双重护肝',
-      '奶蓟草修复肝细胞膜，麦角硫因清除肝细胞自由基',
-      '人体临床实证：30天转氨酶降低19-21%',
-      '唯一在三甲医院完成人体临床试验的护肝膳食补充剂',
-      '麦角硫因直达细胞线粒体，为肝细胞提供能量',
-      '抗氧化力是VE的60000倍，强效清除肝脏自由基',
-      'FDA GRAS认证，纯度99.99%，安全可长期服用'
-    ],
-    specs: [
-      {label: '核心成分', value: '麦角硫因+奶蓟草'},
-      {label: '规格', value: '60粒/瓶'},
-      {label: '服用', value: '每日2粒'},
-      {label: '功效', value: '护肝·排毒·抗氧化'}
-    ],
-    packages: [
-      {spec: '1瓶（60粒）', price: '¥739', commission: '¥221.70'},
-      {spec: '3瓶', price: '¥2049', commission: '¥614.70', gift: '赠同款小样*1+基础款14粒30mg*1袋'},
-      {spec: '6瓶', price: '¥3659', commission: '¥1097.70', special: true, gift: '赠同款小样*3+基础款14粒30mg*1袋'}
-    ]
+    'skincare_moist_cream_1000': {
+      name: '玻麦妍1000+PPM滋润面霜',
+      tag: '糖氧双抗',
+      desc: '糖氧双抗，麦角硫因细胞级抗氧',
+      image: 'assets/product_skincare_moist_cream_1000.png',
+      points: [
+        '足量添加麦角硫因，雅诗兰黛白金、海蓝之谜等国际大牌同款贵价抗氧成分',
+        '1000+PPM浓度，内外源抗氧化，外部抵御紫外线光老化',
+        '糖氧双抗，滋润保湿',
+        '入门抗氧面霜，性价比高'
+      ],
+      specs: [
+        {label: '核心成分', value: '1000+PPM麦角硫因'},
+        {label: '规格', value: '面霜'},
+        {label: '适用', value: '所有肤质'},
+        {label: '功效', value: '糖氧双抗·滋润'}
+      ],
+      packages: [
+        {spec: '1瓶', price: '¥199', commission: '¥59.70', gift: '赠同款面霜5g*1（赠品价值99元）'},
+        {spec: '3瓶', price: '¥469', commission: '¥140.70', gift: '赠同款面霜5g*3（赠品价值297元）'}
+      ]
+    },
+    'skincare_lifting_cream_1000': {
+      name: '1000PPM麦角硫因赋活焕颜绷带霜',
+      tag: '提拉紧致',
+      desc: '提拉紧致，麦角硫因细胞级抗氧',
+      image: 'assets/product_skincare_lifting_cream_1000.png',
+      points: [
+        '足量添加麦角硫因，国际大牌同款贵价抗氧核心成分',
+        '1000+PPM浓度，唯一通路清晰可进入细胞线粒体的抗氧化成分',
+        '强效抗氧去黄提亮，提拉紧致',
+        '绷带面霜，塑造V脸轮廓'
+      ],
+      specs: [
+        {label: '核心成分', value: '1000+PPM麦角硫因'},
+        {label: '规格', value: '面霜'},
+        {label: '适用', value: '所有肤质'},
+        {label: '功效', value: '提拉·紧致·绷带'}
+      ],
+      packages: [
+        {spec: '1瓶', price: '¥199', commission: '¥59.70', gift: '赠同款小样*1'},
+        {spec: '3瓶', price: '¥469', commission: '¥140.70', gift: '赠同款小样*3'}
+      ]
+    },
+    'skincare_patch_mask_1000': {
+      name: '1000+PPM麦角硫因灵芝焕颜面膜',
+      tag: '焕白提亮',
+      desc: '焕白提亮，麦角硫因细胞级抗氧',
+      image: 'assets/product_skincare_patch_mask_1000.png',
+      points: [
+        '1000+PPM麦角硫因，高能抗氧化焕白提亮',
+        '麦角硫因被称为抗氧化届的爱马仕，雅诗兰黛、雅顿等国际大牌当家抗老成分',
+        '温和修护，敏感肌必备',
+        '贴片面膜，方便使用'
+      ],
+      specs: [
+        {label: '核心成分', value: '1000+PPM麦角硫因'},
+        {label: '规格', value: '贴片面膜'},
+        {label: '适用', value: '敏肌'},
+        {label: '功效', value: '焕白·抗氧·修护'}
+      ],
+      packages: [
+        {spec: '3盒', price: '¥199', commission: '¥59.70', gift: '赠同款贴片面膜3片'},
+        {spec: '6盒', price: '¥289', commission: '¥86.70', gift: '赠同款贴片面膜3片'},
+        {spec: '9盒', price: '¥399', commission: '¥119.70', special: true, gift: '赠同款贴片面5片'}
+      ]
+    },
+    'eyewash-portable': {
+      name: '仅三麦角硫因洗眼液（便携版）',
+      tag: '眼部抗氧',
+      desc: '眼部抗氧，告别"人老珠黄"，人体临床报告官网可查',
+      image: 'assets/product_eyewash_portable.png',
+      points: ['眼部抗氧，告别"人老珠黄"，人体临床报告官网可查', '行业首获临床试验备案（ChiCTR2400090987）', '抖音豆豆babe 1小时热卖27w，第十届金梧奖年度推荐单品', '麦角硫因直达眼部细胞，清除自由基', '便携独立包装，干净卫生，随身可用'],
+      specs: [
+        {label: '核心成分', value: '麦角硫因'},
+        {label: '规格', value: '0.5mL*20支+5ml*6支+洗眼杯*1'},
+        {label: '适用', value: '日常眼部护理'},
+        {label: '功效', value: '眼部抗氧·舒缓'}
+      ],
+      packages: [
+        {spec: '1盒', price: '¥119', commission: '¥29.75', gift: '赠便携装0.5ml*5支*1盒'},
+        {spec: '2盒', price: '¥198', commission: '¥49.50', gift: '赠便携装0.5ml*5支*2盒'},
+        {spec: '3盒', price: '¥299', commission: '¥74.75', special: true, gift: '赠便携装0.5ml*5支*5盒'}
+      ]
+    },
+    'eyewash-pure': {
+      name: '仅三麦角硫因洗眼液（纯洗版）',
+      tag: '大容量纯洗',
+      desc: '眼部抗氧，大容量家庭装，日常护眼必备',
+      image: 'assets/product_eyewash_pure.png',
+      points: ['眼部抗氧，告别"人老珠黄"，人体临床报告官网可查', '行业首获临床试验备案（ChiCTR2400090987）', '大容量家庭装，高性价比，日常护眼必备', '深层清洁眼部，缓解眼疲劳，明亮双眼', '麦角硫因抗氧化修护，温和不刺激'],
+      specs: [
+        {label: '核心成分', value: '麦角硫因'},
+        {label: '规格', value: '5ml*24/盒'},
+        {label: '适用', value: '家庭日常护眼'},
+        {label: '功效', value: '清洁·抗氧·舒缓'}
+      ],
+      packages: [
+        {spec: '1盒', price: '¥199', commission: '¥49.75', gift: '赠便携装0.5ml*5支*1盒'},
+        {spec: '2盒', price: '¥359', commission: '¥89.75', gift: '赠便携装0.5ml*5支*2盒'},
+        {spec: '4盒', price: '¥669', commission: '¥167.25', gift: '赠便携装0.5ml*5支*4盒'}
+      ]
+    },
+    'capsule-30mg-60': {
+      name: 'GENEIII麦角硫因口服胶囊 30mg（60粒）',
+      tag: '细胞级抗衰',
+      desc: '细胞线粒体级抗衰，2粒=1.5斤鲜灵芝，改善睡眠益气养血',
+      image: 'assets/product_capsule_basic.png',
+      points: [
+        '细胞线粒体级抗衰，2粒=1.5斤鲜灵芝（每斤鲜灵芝仅含40mg麦角硫因）',
+        '唯一可进入细胞线粒体清除自由基的抗氧化成分，搭载OCTN1转运蛋白',
+        '清除自由基能力是VE的60000倍、辅酶Q10的20倍、虾青素的6倍',
+        '酪氨酸酶抑制率87.62%，源头阻断黑色素形成',
+        '改善睡眠，益气养血，补气提神，皮肤嫩精神好',
+        '国内唯一三甲医院临床试验备案（ChiCTR2400093739），人民日报发布',
+        'FDA GRAS认证，纯度99.99%，新加坡国立大学Barry Halliwell教授合作'
+      ],
+      specs: [
+        {label: '核心成分', value: '30mg麦角硫因/粒'},
+        {label: '规格', value: '60粒/瓶'},
+        {label: '服用', value: '每日2粒'},
+        {label: '功效', value: '抗衰·助眠·养血'}
+      ],
+      packages: [
+        {spec: '1瓶（60粒）', price: '¥529', commission: '¥158.70', gift: '赠同款14粒*1袋'},
+        {spec: '2瓶', price: '¥899', commission: '¥269.70', gift: '赠同款14粒*1袋'},
+        {spec: '3瓶', price: '¥1299', commission: '¥389.70', gift: '赠同款14粒*2袋'}
+      ]
+    },
+    'capsule-30mg-90': {
+      image: 'assets/product_capsule_90mg.png',
+      name: 'GENEIII麦角硫因口服胶囊 30mg（90粒）',
+      tag: '大容量装',
+      desc: '90粒大容量更高性价比，细胞线粒体级抗衰',
+      points: [
+        '90粒大容量装，单粒成本更低，性价比更高',
+        '细胞线粒体级抗衰，2粒=1.5斤鲜灵芝',
+        '唯一可进入细胞线粒体清除自由基，搭载OCTN1转运蛋白',
+        '抗氧化力是VE的60000倍、辅酶Q10的20倍',
+        '改善睡眠，益气养血，补气提神',
+        '三甲医院临床试验备案，FDA GRAS认证，纯度99.99%'
+      ],
+      specs: [
+        {label: '核心成分', value: '30mg麦角硫因/粒'},
+        {label: '规格', value: '90粒/瓶'},
+        {label: '服用', value: '每日2粒'},
+        {label: '功效', value: '抗衰·助眠·养血'}
+      ],
+      packages: [
+        {spec: '1瓶（90粒）', price: '¥699', commission: '¥209.70'},
+        {spec: '2瓶', price: '¥1249', commission: '¥374.70', gift: '赠同款14粒*2袋'},
+        {spec: '4瓶', price: '¥2229', commission: '¥668.70', gift: '赠同款14粒*4袋'},
+        {spec: '6瓶', price: '¥3059', commission: '¥917.70', special: true, gift: '赠同款14粒*7袋'}
+      ]
+    },
+    'capsule-50mg-60': {
+      name: 'GENEIII麦角硫因口服胶囊 50mg（加强款）',
+      tag: '高含量加强',
+      desc: '50mg高含量加强版，细胞线粒体级抗衰，效果更强',
+      image: 'assets/product_capsule_strong.png',
+      points: [
+        '50mg高含量加强版，细胞线粒体级抗衰（基础款为30mg/粒）',
+        '唯一可进入细胞线粒体清除自由基，搭载OCTN1转运蛋白',
+        '抗氧化力是谷胱甘肽2倍、虾青素6倍、VE的60000倍',
+        '皮肤嫩、呼呼香、精神头好，强效抗衰',
+        '人体临床护肝报告官网可查，三甲医院临床实证',
+        'FDA GRAS认证，纯度99.99%，安全可长期服用'
+      ],
+      specs: [
+        {label: '核心成分', value: '50mg麦角硫因/粒'},
+        {label: '规格', value: '60粒/瓶'},
+        {label: '服用', value: '每日2粒'},
+        {label: '功效', value: '强效抗衰·助眠·护肝'}
+      ],
+      packages: [
+        {spec: '1瓶（60粒）', price: '¥899', commission: '¥269.70', gift: '赠同款14粒*1袋'},
+        {spec: '2瓶', price: '¥1249', commission: '¥374.70'},
+        {spec: '3瓶', price: '¥1999', commission: '¥599.70', gift: '赠同款14粒*4袋'},
+        {spec: '6瓶', price: '¥3399', commission: '¥1019.70', special: true, gift: '赠同款14粒*6袋'}
+      ]
+    },
+    'capsule-ovary': {
+      name: 'GENEIII麦角硫因卵巢焕活胶囊',
+      tag: '卵巢养护',
+      desc: '肌醇+VD3+VK2，巢轴-骨骼协同焕活，提升卵泡质量',
+      image: 'assets/product_capsule_ovary.png',
+      points: [
+        '肌醇+VD3+VK2黄金配比，巢轴-骨骼协同焕活',
+        '麦角硫因直达细胞线粒体，为卵巢细胞提供能量',
+        '提升卵泡质量，调节内分泌，改善月经周期',
+        '人体临床实证卵巢焕活效果，三甲医院临床备案',
+        'VD3+VK2协同促进钙吸收，保护骨骼健康',
+        '改善卵巢早衰，延缓更年期，由内而外养出好气色',
+        'FDA GRAS认证，纯度99.99%，安全可长期服用'
+      ],
+      specs: [
+        {label: '核心成分', value: '麦角硫因+肌醇+VD3+VK2'},
+        {label: '规格', value: '60粒/瓶'},
+        {label: '服用', value: '每日2粒'},
+        {label: '功效', value: '卵巢养护·内分泌调节'}
+      ],
+      packages: [
+        {spec: '1瓶（60粒）', price: '¥769', commission: '¥230.70'},
+        {spec: '3瓶', price: '¥2129', commission: '¥638.70', gift: '赠同款小样*1+基础款14粒30mg*1袋'},
+        {spec: '6瓶', price: '¥3939', commission: '¥1181.70', special: true, gift: '赠同款小样*3+基础款14粒30mg*1袋'}
+      ]
+    },
+    'capsule-liver': {
+      name: 'GENEIII麦角硫因护肝款胶囊',
+      tag: '临床护肝',
+      desc: '奶蓟草+麦角硫因，内外源双重护肝，30天转氨酶降低19-21%',
+      image: 'assets/product_capsule_liver.png',
+      points: [
+        '奶蓟草+麦角硫因，内外源双重护肝',
+        '奶蓟草修复肝细胞膜，麦角硫因清除肝细胞自由基',
+        '人体临床实证：30天转氨酶降低19-21%',
+        '唯一在三甲医院完成人体临床试验的护肝膳食补充剂',
+        '麦角硫因直达细胞线粒体，为肝细胞提供能量',
+        '抗氧化力是VE的60000倍，强效清除肝脏自由基',
+        'FDA GRAS认证，纯度99.99%，安全可长期服用'
+      ],
+      specs: [
+        {label: '核心成分', value: '麦角硫因+奶蓟草'},
+        {label: '规格', value: '60粒/瓶'},
+        {label: '服用', value: '每日2粒'},
+        {label: '功效', value: '护肝·排毒·抗氧化'}
+      ],
+      packages: [
+        {spec: '1瓶（60粒）', price: '¥739', commission: '¥221.70'},
+        {spec: '3瓶', price: '¥2049', commission: '¥614.70', gift: '赠同款小样*1+基础款14粒30mg*1袋'},
+        {spec: '6瓶', price: '¥3659', commission: '¥1097.70', special: true, gift: '赠同款小样*3+基础款14粒30mg*1袋'}
+      ]
+    }
+  };
+
+  // ===== 产品分组与佣金率配置 =====
+  // Group 1: GENEIII口服线 + 玻麦妍护肤线 → A:30%, B:25%
+  // Group 2: 个护健康线 → A:25%, B:20%
+  var PRODUCT_GROUP_MAP = {
+    // Group 1: 口服线
+    'capsule-30mg-60': 1,
+    'capsule-30mg-90': 1,
+    'capsule-50mg-60': 1,
+    'capsule-ovary': 1,
+    'capsule-liver': 1,
+    // Group 1: 护肤线
+    'skincare_2000ppm': 1,
+    'skincare_5000ppm': 1,
+    'skincare_5000ppm_white': 1,
+    'skincare_whitening_water': 1,
+    'skincare_breath_cream_2000_white': 1,
+    'skincare_lifting_cream_1000': 1,
+    'skincare_patch_mask_1000': 1,
+    // Group 2: 个护健康线
+    'eyewash-portable': 2,
+    'eyewash-pure': 2
+  };
+
+  var GROUP_RATES = {
+    1: {A: 0.30, B: 0.25},
+    2: {A: 0.25, B: 0.20}
+  };
+
+  var currentCommissionMode = 'A';
+  var currentModalProductId = null;
+
+  function getProductGroup(productId) {
+    return PRODUCT_GROUP_MAP[productId] || 1;
   }
-};
 
-// ===== 产品分组与佣金率配置 =====
-// Group 1: GENEIII口服线 + 玻麦妍护肤线 → A:30%, B:25%
-// Group 2: 个护健康线 → A:25%, B:20%
-var PRODUCT_GROUP_MAP = {
-  // Group 1: 口服线
-  'capsule-30mg-60': 1,
-  'capsule-30mg-90': 1,
-  'capsule-50mg-60': 1,
-  'capsule-ovary': 1,
-  'capsule-liver': 1,
-  // Group 1: 护肤线
-  'skincare_2000ppm': 1,
-  'skincare_5000ppm': 1,
-  'skincare_5000ppm_white': 1,
-  'skincare_whitening_water': 1,
-  'skincare_breath_cream_2000_white': 1,
-  'skincare_lifting_cream_1000': 1,
-  'skincare_patch_mask_1000': 1,
-  // Group 2: 个护健康线
-  'eyewash-portable': 2,
-  'eyewash-pure': 2
-};
-
-var GROUP_RATES = {
-  1: { A: 0.30, B: 0.25 },
-  2: { A: 0.25, B: 0.20 }
-};
-
-var currentCommissionMode = 'A';
-var currentModalProductId = null;
-
-function getProductGroup(productId) {
-  return PRODUCT_GROUP_MAP[productId] || 1;
-}
-
-function getCommissionRate(productId) {
-  var group = getProductGroup(productId);
-  return GROUP_RATES[group][currentCommissionMode];
-}
-
-function commissionText(price, productId) {
-  var rate = getCommissionRate(productId);
-  var val = Math.round(price * rate * 100) / 100;
-  return '¥' + val.toFixed(2);
-}
-
-function setCommissionMode(mode) {
-  currentCommissionMode = mode;
-  // 按钮高亮
-  document.querySelectorAll('.mode-btn').forEach(function(btn) {
-    btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
-  });
-  // 遍历每个产品卡片，按其所属分组更新佣金
-  document.querySelectorAll('.product-card').forEach(function(card) {
-    // 从 onclick 属性提取产品ID
-    var onclickAttr = card.getAttribute('onclick') || '';
-    var match = onclickAttr.match(/openModal\('([^']+)'\)/);
-    var productId = match ? match[1] : null;
-    if (!productId) return;
-
-    card.querySelectorAll('.package-item').forEach(function(item) {
-      var priceEl = item.querySelector('.package-price');
-      var amtEl = item.querySelector('.commission-amount');
-      if (priceEl && amtEl) {
-        var price = parseFloat(priceEl.textContent.replace(/[^\d.]/g, ''));
-        amtEl.textContent = commissionText(price, productId);
-      }
-    });
-  });
-  // 弹窗标题与已打开弹窗内容
-  var titleEl = document.getElementById('modalSectionTitle');
-  if (titleEl && currentModalProductId) {
-    var group = getProductGroup(currentModalProductId);
-    var rate = Math.round(GROUP_RATES[group][mode] * 100);
-    var groupName = group === 1 ? '口服+护肤线' : '个护健康线';
-    titleEl.textContent = '套餐与佣金（' + groupName + ' ' + rate + '%）';
-  }
-  if (currentModalProductId && document.getElementById('productModal').classList.contains('active')) {
-    renderModalPackages(currentModalProductId);
-  }
-}
-
-function renderModalPackages(productId) {
-  var product = productData[productId];
-  if (!product) return;
-  var packagesDiv = document.getElementById('modalPackages');
-  packagesDiv.innerHTML = product.packages.map(function(p) {
-    var price = parseFloat(p.price.replace(/[^\d.]/g, ''));
-    return '<div class="modal-package-row' + (p.special ? ' is-special' : '') + '">' +
-    '<div class="modal-package-left">' +
-    '<div class="modal-package-spec">' + p.spec + '</div>' +
-    '<div class="modal-package-price">带货价 ' + p.price + '</div>' +
-    '</div>' +
-    (p.gift ? '<div class="modal-package-middle"><span class="modal-package-gift">' + p.gift + '</span></div>' : '<div class="modal-package-middle"><span class="modal-package-gift no-gift">无赠品</span></div>') +
-    '<div class="modal-package-right">' +
-    '<div class="modal-package-commission-amount">' + commissionText(price, productId) + '</div>' +
-    '<div class="modal-package-commission-label">达人佣金</div>' +
-    '</div></div>';
-  }).join('');
-}
-
-function openModal(productId) {
-  const product = productData[productId];
-  if (!product) return;
-  
-  currentModalProductId = productId;
-  document.getElementById('modalName').textContent = product.name;
-  document.getElementById('modalTag').textContent = product.tag;
-  document.getElementById('modalDesc').textContent = product.desc;
-  
-  // 隐藏所有图片
-  document.querySelectorAll('#modalImage img').forEach(img => img.style.display = 'none');
-  // 显示对应图片
-  const img = document.getElementById('modal-img-' + productId);
-  if (img) img.style.display = 'block';
-  
-  // 填充卖点
-  const pointsUl = document.getElementById('modalPoints');
-  pointsUl.innerHTML = product.points.map(p => '<li>' + p + '</li>').join('');
-  
-  // 填充规格
-  const specsDiv = document.getElementById('modalSpecs');
-  specsDiv.innerHTML = product.specs.map(s => 
-    '<div class="modal-spec-item"><span class="modal-spec-label">' + s.label + '</span><span class="modal-spec-value">' + s.value + '</span></div>'
-  ).join('');
-  
-  // 填充套餐（按当前合作模式计算佣金）
-  renderModalPackages(productId);
-  
-  // 弹窗标题同步当前模式与产品组
-  var titleEl = document.getElementById('modalSectionTitle');
-  if (titleEl) {
+  function getCommissionRate(productId) {
     var group = getProductGroup(productId);
-    var rate = Math.round(GROUP_RATES[group][currentCommissionMode] * 100);
-    var groupName = group === 1 ? '口服+护肤线' : '个护健康线';
-    titleEl.textContent = '套餐与佣金（' + groupName + ' ' + rate + '%）';
+    return GROUP_RATES[group][currentCommissionMode];
   }
-  
-  document.getElementById('productModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
 
-function closeModal(event) {
-  if (event && event.target.closest('.modal-content')) return;
-  document.getElementById('productModal').classList.remove('active');
-  document.body.style.overflow = '';
-}
+  function commissionText(price, productId) {
+    var rate = getCommissionRate(productId);
+    var val = Math.round(price * rate * 100) / 100;
+    return '¥' + val.toFixed(2);
+  }
 
-// ESC关闭弹窗
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeModal();
-});
+  function setCommissionMode(mode) {
+    currentCommissionMode = mode;
+    // 按钮高亮
+    document.querySelectorAll('.mode-btn').forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
+    });
+    // 遍历每个产品卡片，按其所属分组更新佣金
+    document.querySelectorAll('.product-card').forEach(function (card) {
+      // 从 onclick 属性提取产品ID
+      var onclickAttr = card.getAttribute('onclick') || '';
+      var match = onclickAttr.match(/openModal\('([^']+)'\)/);
+      var productId = match ? match[1] : null;
+      if (!productId) return;
 
-// 进入页面默认 A 类合作模式（30%）
-setCommissionMode('A');
+      card.querySelectorAll('.package-item').forEach(function (item) {
+        var priceEl = item.querySelector('.package-price');
+        var amtEl = item.querySelector('.commission-amount');
+        if (priceEl && amtEl) {
+          var price = parseFloat(priceEl.textContent.replace(/[^\d.]/g, ''));
+          amtEl.textContent = commissionText(price, productId);
+        }
+      });
+    });
+    // 弹窗标题与已打开弹窗内容
+    var titleEl = document.getElementById('modalSectionTitle');
+    if (titleEl && currentModalProductId) {
+      var group = getProductGroup(currentModalProductId);
+      var rate = Math.round(GROUP_RATES[group][mode] * 100);
+      var groupName = group === 1 ? '口服+护肤线' : '个护健康线';
+      titleEl.textContent = '套餐与佣金（' + groupName + ' ' + rate + '%）';
+    }
+    if (currentModalProductId && document.getElementById('productModal').classList.contains('active')) {
+      renderModalPackages(currentModalProductId);
+    }
+  }
+
+  function renderModalPackages(productId) {
+    var product = productData[productId];
+    if (!product) return;
+    var packagesDiv = document.getElementById('modalPackages');
+    packagesDiv.innerHTML = product.packages.map(function (p) {
+      var price = parseFloat(p.price.replace(/[^\d.]/g, ''));
+      return '<div class="modal-package-row' + (p.special ? ' is-special' : '') + '">' +
+        '<div class="modal-package-left">' +
+        '<div class="modal-package-spec">' + p.spec + '</div>' +
+        '<div class="modal-package-price">带货价 ' + p.price + '</div>' +
+        '</div>' +
+        (p.gift ? '<div class="modal-package-middle"><span class="modal-package-gift">' + p.gift + '</span></div>' : '<div class="modal-package-middle"><span class="modal-package-gift no-gift">无赠品</span></div>') +
+        '<div class="modal-package-right">' +
+        '<div class="modal-package-commission-amount">' + commissionText(price, productId) + '</div>' +
+        '<div class="modal-package-commission-label">达人佣金</div>' +
+        '</div></div>';
+    }).join('');
+  }
+
+  function openModal(productId) {
+    const product = productData[productId];
+    if (!product) return;
+
+    currentModalProductId = productId;
+    document.getElementById('modalName').textContent = product.name;
+    document.getElementById('modalTag').textContent = product.tag;
+    document.getElementById('modalDesc').textContent = product.desc;
+
+    // 隐藏所有图片
+    document.querySelectorAll('#modalImage img').forEach(img => img.style.display = 'none');
+    // 显示对应图片
+    const img = document.getElementById('modal-img-' + productId);
+    if (img) img.style.display = 'block';
+
+    // 填充卖点
+    const pointsUl = document.getElementById('modalPoints');
+    pointsUl.innerHTML = product.points.map(p => '<li>' + p + '</li>').join('');
+
+    // 填充规格
+    const specsDiv = document.getElementById('modalSpecs');
+    specsDiv.innerHTML = product.specs.map(s =>
+      '<div class="modal-spec-item"><span class="modal-spec-label">' + s.label + '</span><span class="modal-spec-value">' + s.value + '</span></div>'
+    ).join('');
+
+    // 填充套餐（按当前合作模式计算佣金）
+    renderModalPackages(productId);
+
+    // 弹窗标题同步当前模式与产品组
+    var titleEl = document.getElementById('modalSectionTitle');
+    if (titleEl) {
+      var group = getProductGroup(productId);
+      var rate = Math.round(GROUP_RATES[group][currentCommissionMode] * 100);
+      var groupName = group === 1 ? '口服+护肤线' : '个护健康线';
+      titleEl.textContent = '套餐与佣金（' + groupName + ' ' + rate + '%）';
+    }
+
+    document.getElementById('productModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(event) {
+    if (event && event.target.closest('.modal-content')) return;
+    document.getElementById('productModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // ESC关闭弹窗
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // 进入页面默认 A 类合作模式（30%）
+  setCommissionMode('A');
 </script>
 
 </body>
-</html>
 
+</html>
